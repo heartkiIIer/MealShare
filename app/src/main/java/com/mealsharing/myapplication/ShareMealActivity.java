@@ -21,7 +21,6 @@ public class ShareMealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_share_meal);
         // Spinner element
         Spinner spinner = (Spinner) findViewById(R.id.meals_amount);
-
         // Spinner click listener
 //        spinner.setOnItemSelectedListener(this);
 
@@ -31,16 +30,12 @@ public class ShareMealActivity extends AppCompatActivity {
         categories.add("2 ");
         categories.add("3");
         categories.add("4+");
-
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
-
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
         // attaching data adapter to spinner
         spinner.setAdapter(dataAdapter);
-
         // Spinner element
         Spinner locationsSpinner = (Spinner) findViewById(R.id.locationsSpinner);
 
@@ -55,7 +50,7 @@ public class ShareMealActivity extends AppCompatActivity {
         locationsCategories.add("Goats Head");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> locationsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        ArrayAdapter<String> locationsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, locationsCategories);
 
         // Drop down layout style - list view with radio button
         locationsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
