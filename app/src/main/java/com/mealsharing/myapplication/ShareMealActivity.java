@@ -57,16 +57,16 @@ public class ShareMealActivity extends AppCompatActivity {
          notesEditText = (EditText) findViewById(R.id.ShareMealNoteEditText);
 
 
+//         Database stuff
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-         mUsername = mFirebaseUser.getDisplayName();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+        mUsername = mFirebaseUser.getDisplayName();
         if (mFirebaseUser.getPhotoUrl() != null) {
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
         }
 
         // Spinner click listener
-//        spinner.setOnItemSelectedListener(this);
-
         // Spinner Drop down elements
         List<String> categories = new ArrayList<String>();
         categories.add("1");
@@ -80,10 +80,6 @@ public class ShareMealActivity extends AppCompatActivity {
         // attaching data adapter to spinner
         mealsAmount.setAdapter(dataAdapter);
         // Spinner element
-
-        // Spinner click listener
-//        spinner.setOnItemSelectedListener(this);
-
         // Spinner Drop down elements
         List<String> locationsCategories = new ArrayList<String>();
         locationsCategories.add("Campus Center");
@@ -99,9 +95,8 @@ public class ShareMealActivity extends AppCompatActivity {
 
         // attaching data adapter to spinner
         locationsSpinner.setAdapter(locationsAdapter);
-
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
+
     /*
     users submit a posting for sharing meals
     insert into database
@@ -109,7 +104,6 @@ public class ShareMealActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     public void onShareMealSubmit(View view){
-//        String userName="";
         String locations= "";
         if (locationsSpinner.getSelectedItem()==null){
             locations="Campus Center";
@@ -124,8 +118,6 @@ public class ShareMealActivity extends AppCompatActivity {
         else{
             numberMeals= mealsAmount.getSelectedItem().toString() ;
         }
-//        String userImg="" ;
-//        String fromTime= "";
         int startHour= fromTimePicker.getHour();
         int startMinute= fromTimePicker.getMinute();
         int endHour = toTimePicker.getHour();
@@ -138,38 +130,7 @@ public class ShareMealActivity extends AppCompatActivity {
         DatabaseReference newMealId = mDatabaseReference.child("Meals");
         Toast.makeText(this, "Thank you for ending hunger!", Toast.LENGTH_SHORT).show();
 
-//        newMealId.setValue(newMeal, new DatabaseReference.CompletionListener() {
-//            @Override
-//            public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-//                if (databaseError != null) {
-//                    System.out.println("Data could not be saved " + databaseError.getMessage());
-//                } else {
-//                    System.out.println("Data saved successfully.");
-//
-//                }
-//            };
-
-//        });
-
-//        mDatabaseReference.child("meals").child(key)
-//                .setValue(newMeal);
 
 
-
-
-    }
-//    TODO
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
-    }
-    public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
-    }
-
-    public void showDatePickerDialog(View view) {
     }
 }
