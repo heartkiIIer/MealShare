@@ -86,11 +86,22 @@ public class MealSwipes {
     private int endHour;
     private int endMinute;
 
+    public String getPhotoURL() {
+        return photoURL;
+    }
+
+    public void setPhotoURL(String photoURL) {
+        this.photoURL = photoURL;
+    }
+
+    private String photoURL;
 
 
-    public MealSwipes(String name, String locations, String numberMeals, String userImg, String notes,
+
+    public MealSwipes(String name, String photoURL, String locations, String numberMeals, String userImg, String notes,
                       int startHour, int startMinute, int endHour, int endMinute){
         this.userName=name;
+        this.photoURL=photoURL;
         this.locations=locations;
         this.numberMeals=numberMeals;
         this.userImg=userImg;
