@@ -49,6 +49,7 @@ public class ShareMealActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_meal);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Widgets element ID
         mealsAmount = (Spinner) findViewById(R.id.meals_amount);
         locationsSpinner = (Spinner) findViewById(R.id.locationsSpinner);

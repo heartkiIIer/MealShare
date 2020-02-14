@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".FindMealActivity"></activity>
-        <activity android:name=".ShareMealActivity" />
+        <activity android:name=".ShareMealActivity"
+          android:parentActivityName=".MainActivity"  />
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
