@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -46,13 +47,16 @@ public class MainActivity extends AppCompatActivity
             finish();
             Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show();
             return;
-        } else {
-            Toast.makeText(this, "Inside login page", Toast.LENGTH_SHORT).show();
-
-//            mUsername = mFirebaseUser.getDisplayName();
-//            if (mFirebaseUser.getPhotoUrl() != null) {
-//                mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
-            }
+        }
+//        else {
+////            Toast.makeText(this, "Inside login page", Toast.LENGTH_SHORT).show();
+////            Log.d(TAG, "onCreate: inside");
+//
+//
+////            mUsername = mFirebaseUser.getDisplayName();
+////            if (mFirebaseUser.getPhotoUrl() != null) {
+////                mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
+//            }
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
@@ -68,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onFindMeal(View view){
-        Intent intent = new Intent(this, ShareMealActivity.class);
+        Intent intent = new Intent(this, FindMealActivity.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

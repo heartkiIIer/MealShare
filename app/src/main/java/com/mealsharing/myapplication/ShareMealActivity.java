@@ -129,7 +129,7 @@ public class ShareMealActivity extends AppCompatActivity {
                 startHour, startMinute, endHour, endMinute);
         mDatabaseReference.child("Meals").push().setValue(newMeal);
         DatabaseReference newMealId = mDatabaseReference.child("Meals");
-        Toast.makeText(this, "Thank you for ending hunger!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Thank you for ending hunger!", Toast.LENGTH_LONG).show();
 
 
 
