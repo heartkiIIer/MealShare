@@ -9,12 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShareMealActivity extends AppCompatActivity {
 
-
+//    private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference mDatabaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +62,24 @@ public class ShareMealActivity extends AppCompatActivity {
         // attaching data adapter to spinner
         locationsSpinner.setAdapter(locationsAdapter);
 
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
+
 
     }
     /*
     users submit a posting for sharing meals
+    insert into database
     */
 
     public void onShareMealSubmit(View view){
+        String locations ="CC";
+        String name="test";
+        MealSwipes newMeal= new MealSwipes(locations, name);
+        mDatabaseReference.child("Meals").setValue(newMeal);
+
+
+
 
     }
 //    TODO
