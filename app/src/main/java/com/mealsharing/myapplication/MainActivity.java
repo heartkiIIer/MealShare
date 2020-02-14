@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -56,6 +58,21 @@ public class MainActivity extends AppCompatActivity
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
         }
+
+//    Button ShareMeal = (Button) findViewById(R.id.SharingMeal);
+
+    public void onShareMeal(View view){
+        Intent intent = new Intent(this, ShareMealActivity.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    public void onFindMeal(View view){
+        Intent intent = new Intent(this, ShareMealActivity.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
 
 
     @Override
