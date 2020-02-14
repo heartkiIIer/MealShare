@@ -76,5 +76,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/ShareMealsSubmitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onShareMealSubmit"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/meals_amount"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="627dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

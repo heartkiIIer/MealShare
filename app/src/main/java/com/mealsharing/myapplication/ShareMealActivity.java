@@ -60,6 +60,13 @@ public class ShareMealActivity extends AppCompatActivity {
 
 
     }
+    /*
+    users submit a posting for sharing meals
+    */
+
+    public void onShareMealSubmit(View view){
+
+    }
 //    TODO
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         // On selecting a spinner item
