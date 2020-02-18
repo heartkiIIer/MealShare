@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void onFindMeal(View view){
-        Intent intent = new Intent(this, ShareMealActivity.class);
+        Intent intent = new Intent(this, FindMealActivity.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
