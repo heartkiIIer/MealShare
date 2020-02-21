@@ -17,7 +17,7 @@ public class FindMealActivity extends AppCompatActivity {
     private DatabaseReference mDatabaseReference;
     RecyclerView recyclerView;
 
-    String test [] = {"im shine", "im chloe", "im alex", "im hoe"};
+    String test [] = {"im SHING", "im chloe", "im alex", "im hoe"};
     int images [] = {R.drawable.com_facebook_profile_picture_blank_portrait,R.drawable.com_facebook_favicon_blue, R.drawable.common_google_signin_btn_icon_dark, R.drawable.com_facebook_profile_picture_blank_portrait};
 
 
