@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ViewMyPostingsActivity"
+            android:parentActivityName=".ShareMealOptionsActivity" />
+        <activity
             android:name=".FindMealActivity"
             android:parentActivityName=".FindMealOptionsActivity" />
         <activity
@@ -18,7 +21,6 @@
         <activity
             android:name=".ShareMealOptionsActivity"
             android:parentActivityName=".MainActivity" />
-
         <activity
             android:name=".FindMealOptionsActivity"
             android:parentActivityName=".MainActivity" />
