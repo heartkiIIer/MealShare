@@ -66,7 +66,15 @@
             android:layout_toRightOf="@+id/myposts_endTime"
             android:layout_toEndOf="@+id/myposts_endTime" />
 
-
+        <TextView
+            android:id="@+id/myposts_requestCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="206dp"
+            android:layout_marginLeft="142dp"
+            android:layout_toEndOf="@+id/myposts_endTime"
+            android:layout_toRightOf="@+id/myposts_notes"
+            android:text="Request #" />
 
 
     </RelativeLayout>

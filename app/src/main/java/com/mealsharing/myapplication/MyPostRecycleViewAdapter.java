@@ -52,6 +52,8 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         holder.myposts_notes.setText(meal.getNotes());
 
+        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
+
 
 
 
@@ -69,6 +71,8 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
         public TextView myposts_startTime;
         public TextView myposts_endTime;
         public TextView myposts_notes;
+        public TextView myposts_requestCount;
+
 
 
 
@@ -77,6 +81,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
             super(itemView);
 
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);
+            myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
 
             myposts_startTime = (TextView) itemView.findViewById(R.id.myposts_startTime);
 

@@ -49,36 +49,42 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         //Get map of users in datasnapshot
-//                        collectPhoneNumbers((Map<String,Object>) dataSnapshot.getValue());
-//                        System.out.println(dataSnapshot.getValue());
-//                        System.out.println(dataSnapshot.getValue(MealSwipes.class));
-//                        MealSwipes meal= dataSnapshot.getValue(MealSwipes.class);
-//                        MyMealSwipesList.add(meal);
                         Log.i("DA", "dataSnapshot value = "+dataSnapshot.getValue());
                         if(dataSnapshot.hasChildren()){
                             Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
-                                String nodId = snap.getKey();
+//                                String nodId = snap.getKey();
+                                MealSwipes newMeal = new MealSwipes();
                                 String locations = (String) snap.child("locations").getValue();
+                                newMeal.setLocations(locations);
+
                                 int new_time=-1;
-                                if (snap.child("startHour").getValue()!=null){
-                                    Long time=((long)snap.child("startHour").getValue());
+                                if (snap.child("startMinute").getValue()!=null){
+                                    Long time=((long)snap.child("startMinute").getValue());
                                      new_time=time.intValue();
                                 }
-
-                                System.out.println(locations);
-                                System.out.println("STARTTIME" + new_time);
-                                String notes = (String) snap.child("notes").getValue();
-                                System.out.println("INSIDE---------------------------------");
-                                MealSwipes newMeal = new MealSwipes();
-                                newMeal.setLocations(locations);
+                                newMeal.setStartMinute(new_time);
+                                if (snap.child("startHour").getValue()!=null){
+                                    Long time=((long)snap.child("startHour").getValue());
+                                    new_time=time.intValue();
+                                }
                                 newMeal.setStartHour(new_time);
+                                if (snap.child("endHour").getValue()!=null){
+                                    Long time=((long)snap.child("endHour").getValue());
+                                    new_time=time.intValue();
+                                }
+                                newMeal.setEndHour(new_time);
+                                if (snap.child("requestCount").getValue()!=null){
+                                    Long time=((long)snap.child("requestCount").getValue());
+                                    new_time=time.intValue();
+                                }
+                                newMeal.setRequestCount(new_time);
+
+                                String notes = (String) snap.child("notes").getValue();
                                 newMeal.setNotes(notes);
                                 MyMealSwipesList.add(newMeal);
 
-                                //received results
-//                                Log.i("DA", username + " on nod " + nodId);
                             }
 
                         }
@@ -92,58 +98,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                         //handle databaseError
                     }
                 });
-                ;
 
-//        for (Object meal: MyMealSwipesList){
-//            MealSwipes new_meal=(MealSwipes)meal;
-//
-//        }
-//         databaseReference.add
-//         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//             @Override
-//             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                 Log.d("Tag", "INSIDE DATA CHANGE---:" );
-//                 System.out.println("INSIDE DATA CHANGE----");
-//                 if (dataSnapshot.exists()){
-//                     for (DataSnapshot npsnapshot : dataSnapshot.getChildren()){
-//                         MealSwipes meal=npsnapshot.getValue(MealSwipes.class);
-//                         System.out.println(meal);
-//                         MyMealSwipesList.add(meal);
-//
-//                     }
-//                     adapter=new MyPostRecycleViewAdapter( MyMealSwipesList);
-//
-//                     rv.setAdapter(adapter);
-//                 }
-//             }
-//
-//             @Override
-//             public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//             }
-//         });
     }
-    private void collectPhoneNumbers(Map<String,Object> users) {
-
-//        ArrayList<MealSwipes> phoneNumbers = new ArrayList<>();
-
-        //iterate through each user, ignoring their UID
-        for (Map.Entry<String, Object> entry : users.entrySet()){
-
-            //Get user map
-            Log.d("tag", "ERORR WHY FUCK: "+entry.getValue());
-            System.out.println(entry.getValue());
-//            Map singleUser = (Map) entry.getValue();
-//            //Get phone field and append to list
-//            MealSwipes meal = new MealSwipes();
-//            meal.setStartHour((int)(long)singleUser.get("startHour"));
-//            meal.setLocations((String)singleUser.get("locations"));
-//            phoneNumbers.add((Long) singleUser.get("phone"));
-        }
-
-//        System.out.println(phoneNumbers.toString());
-    }
-
-//    todo create card view that takes my posting information
 
 }
