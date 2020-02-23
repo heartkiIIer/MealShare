@@ -12,7 +12,13 @@
         <activity android:name=".FindMealActivity"
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".ShareMealActivity"
-          android:parentActivityName=".MainActivity"  />
+          android:parentActivityName=".ShareMealOptionsActivity"  />
+
+        <activity android:name=".ShareMealOptionsActivity"
+            android:parentActivityName=".MainActivity"  />
+
+
+
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

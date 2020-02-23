@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
 //    Button ShareMeal = (Button) findViewById(R.id.SharingMeal);
 
     public void onShareMeal(View view){
-        Intent intent = new Intent(this, ShareMealActivity.class);
+        Intent intent = new Intent(this, ShareMealOptionsActivity.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
