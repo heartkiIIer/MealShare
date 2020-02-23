@@ -3,6 +3,7 @@ package com.mealsharing.myapplication;
 public class MealSwipes {
     private String userName;
     private String locations;
+    private int requestCount;
 
     public String getNumberMeals() {
         return numberMeals;
@@ -96,13 +97,16 @@ public class MealSwipes {
 
     private String photoURL;
 
+    public MealSwipes(){
 
+    }
 
-    public MealSwipes(String name, String photoURL, String locations, String numberMeals, String userImg, String notes,
+    public MealSwipes(String name, String photoURL, String locations, int requestCount, String numberMeals, String userImg, String notes,
                       int startHour, int startMinute, int endHour, int endMinute){
         this.userName=name;
         this.photoURL=photoURL;
         this.locations=locations;
+        this.requestCount = requestCount;
         this.numberMeals=numberMeals;
         this.userImg=userImg;
         this.startHour=startHour;
@@ -112,6 +116,9 @@ public class MealSwipes {
         this.notes=notes;
 
     }
+//    public void toString(){
+//        System.out.println(this.userName+" "+this.locations+" "+this.notes);
+//    }
 
     public String getLocations() {
         return locations;
@@ -127,5 +134,13 @@ public class MealSwipes {
 
     public void setUserName(String name) {
         this.userName = name;
+    }
+
+    public int getRequestCount() {
+        return requestCount;
+    }
+
+    public void setRequestCount(int requestCount) {
+        this.requestCount = requestCount;
     }
 }
