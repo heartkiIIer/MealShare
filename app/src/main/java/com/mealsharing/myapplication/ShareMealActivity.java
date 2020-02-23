@@ -59,8 +59,9 @@ public class ShareMealActivity extends AppCompatActivity {
 //         Database stuff
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
         mUsername = mFirebaseUser.getDisplayName();
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
+
         if (mFirebaseUser.getPhotoUrl() != null) {
             mPhotoUrl = mFirebaseUser.getPhotoUrl().toString();
         }
