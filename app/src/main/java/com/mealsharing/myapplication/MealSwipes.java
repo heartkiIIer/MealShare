@@ -116,6 +116,9 @@ public class MealSwipes {
         this.notes=notes;
 
     }
+//    public void toString(){
+//        System.out.println(this.userName+" "+this.locations+" "+this.notes);
+//    }
 
     public String getLocations() {
         return locations;
