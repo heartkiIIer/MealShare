@@ -14,6 +14,7 @@ public class ShareMealOptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_share_meal_options);
 //        Button ViewPostsButton = findViewById(R.layout.ViewPostsButton);
+        setTitle("Share a Meal");
 
     }
 

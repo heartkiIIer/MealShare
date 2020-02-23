@@ -12,5 +12,7 @@ public class FindMealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_meal);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setTitle("Find a Meal");
+
     }
 }
