@@ -9,16 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FindMealActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".ShareMealActivity"
-          android:parentActivityName=".ShareMealOptionsActivity"  />
+        <activity
+            android:name=".FindMealActivity"
+            android:parentActivityName=".FindMealOptionsActivity" />
+        <activity
+            android:name=".ShareMealActivity"
+            android:parentActivityName=".ShareMealOptionsActivity" />
+        <activity
+            android:name=".ShareMealOptionsActivity"
+            android:parentActivityName=".MainActivity" />
 
-        <activity android:name=".ShareMealOptionsActivity"
-            android:parentActivityName=".MainActivity"  />
-
-
-
+        <activity
+            android:name=".FindMealOptionsActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".SignInActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
