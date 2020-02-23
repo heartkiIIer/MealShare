@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardview"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    card_view:cardElevation="5dp"
+    card_view:contentPadding="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardMaxElevation="5dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ECEFF1"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/myposts_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Locations: "
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/myposts_startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Start time: "
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/myposts_location"
+            android:layout_toEndOf="@+id/myposts_location"
+            android:layout_marginLeft="19dp"
+            android:layout_marginStart="19dp" />
+
+        <TextView
+            android:id="@+id/myposts_endTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="End Time: "
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:layout_below="@+id/myposts_location"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/myposts_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Notes"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:layout_marginLeft="11dp"
+            android:layout_marginStart="11dp"
+            android:layout_below="@+id/myposts_endTime"
+            android:layout_toRightOf="@+id/myposts_endTime"
+            android:layout_toEndOf="@+id/myposts_endTime" />
+
+        <TextView
+            android:id="@+id/myposts_requestCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="206dp"
+            android:layout_marginLeft="142dp"
+            android:layout_toEndOf="@+id/myposts_endTime"
+            android:layout_toRightOf="@+id/myposts_notes"
+            android:text="Request #" />
+
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>
+
