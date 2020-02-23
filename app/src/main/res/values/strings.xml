@@ -12,6 +12,16 @@
     <string name="fresh_config">Fresh Config</string>
     <string name="cause_crash">Cause Crash</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="welcome_txt">Welcome to MealShare!</string>
+    <string name="lookbutton_txt">Look for a Meal</string>
+    <string name="sharebutton_txt">Share a Meal</string>
+    <string name="welcome2_txt">What would you like to do?</string>
+    <string name="share_start">Start Time:</string>
+    <string name="share_end">End Time:</string>
+    <string name="noteslabel">Notes:</string>
+    <string name="share_label">How many swipes are you sharing?</string>
+    <string name="sharelocation_label">Where will you use the swipes?</string>
+    <string name="postbutton">Post</string>
     <string name="mealShareSuccess">Thank you for ending hunger!</string>
     <string-array name="meals_amount">
         <item>Mercury</item>
