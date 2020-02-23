@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -15,7 +14,6 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -125,7 +123,7 @@ public class ShareMealActivity extends AppCompatActivity {
         int endMinute=toTimePicker.getMinute();
         String notes=notesEditText.getText().toString();
 
-        MealSwipes newMeal= new MealSwipes(mUsername, mPhotoUrl, locations, numberMeals,userImg, notes,
+        MealSwipes newMeal= new MealSwipes(mUsername, mPhotoUrl, locations, 0, numberMeals,userImg, notes,
                 startHour, startMinute, endHour, endMinute);
         mDatabaseReference.child("Meals").push().setValue(newMeal);
         DatabaseReference newMealId = mDatabaseReference.child("Meals");
