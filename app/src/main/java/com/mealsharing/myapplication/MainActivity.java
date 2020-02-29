@@ -2,7 +2,13 @@ package com.mealsharing.myapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 
@@ -31,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private String mUsername;
     public static final String ANONYMOUS = "anonymous";
 
+    private static final int PERMISSIONS_REQUEST = 1;
 
 
     @Override
@@ -61,7 +68,28 @@ public class MainActivity extends AppCompatActivity
                 .enableAutoManage(this /* FragmentActivity */, this /* OnConnectionFailedListener */)
                 .addApi(Auth.GOOGLE_SIGN_IN_API)
                 .build();
+
+        // Check GPS is enabled
+        LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Toast.makeText(this, "Please enable location services", Toast.LENGTH_SHORT).show();
+            finish();
         }
+
+        // Check location permission is granted - if it is, start
+        // the service, otherwise request the permission
+        int permission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION);
+        if (permission == PackageManager.PERMISSION_GRANTED) {
+            System.out.println("PERMISSION GRANTED");
+            Toast.makeText(this, "PERMISSION SERVICE ACCEPTED", Toast.LENGTH_SHORT);
+//            startTrackerService();
+        } else {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                    PERMISSIONS_REQUEST);
+        }
+    }
 
 //    Button ShareMeal = (Button) findViewById(R.id.SharingMeal);
 
