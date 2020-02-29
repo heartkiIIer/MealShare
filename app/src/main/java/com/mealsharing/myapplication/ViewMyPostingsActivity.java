@@ -116,13 +116,6 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
 
                             }
                         });
-                        RelativeLayout rc1 = findViewById(R.id.myposts);
-                        rc1.setOnClickListener(new View.OnClickListener(){
-                            @Override
-                            public void onClick(View v){
-                                Log.d(ViewMyPostingsActivity.class.toString(), "clicked");
-                            }
-                        });
                         rv.setAdapter(adapter);
                         System.out.println(("--------------------"));
                     }
