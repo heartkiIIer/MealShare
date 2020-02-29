@@ -58,7 +58,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.myposts_notes.setText(meal.getNotes());
 
-        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
+//        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
         holder.myposts_userName.setText(meal.getUserName());
 
@@ -83,8 +83,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            myposts_userName = itemView.findViewById(R.id.userName);
-            myposts_userImage = itemView.findViewById(R.id.userImage);
+            myposts_userName = itemView.findViewById(R.id.myposts_userName);
+            myposts_userImage = itemView.findViewById(R.id.myposts_userImage);
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);
             myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
             myposts_startTime = (TextView) itemView.findViewById(R.id.myposts_startTime);

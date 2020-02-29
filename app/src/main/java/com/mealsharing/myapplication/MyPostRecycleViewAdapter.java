@@ -52,7 +52,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         holder.myposts_notes.setText(meal.getNotes());
 
-        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
+//        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
     }
 
