@@ -18,6 +18,8 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,6 +28,10 @@ import androidx.core.content.ContextCompat;
 public class TrackerService extends Service {
 
     private static final String TAG = TrackerService.class.getSimpleName();
+
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+
 
     @Override
     public IBinder onBind(Intent intent) {return null;}
@@ -67,14 +73,23 @@ public class TrackerService extends Service {
         // Functionality coming next step
     }
 
+    private String getCurrentUserName(){
+        //         Database stuff
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        String mUsername = mFirebaseUser.getDisplayName();
+        return mUsername;
+    }
+
     private void requestLocationUpdates() {
         LocationRequest request = new LocationRequest();
         request.setInterval(10000);
         request.setFastestInterval(5000);
         request.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         FusedLocationProviderClient client = LocationServices.getFusedLocationProviderClient(this);
-//        final String path = getString(R.string.firebase_path) + "/" + getString(R.string.transport_id);
-        final String path = "location/test";
+        //        get users name
+        String mUsername = getCurrentUserName();
+        final String path = getString(R.string.userLocationFirebasse) + mUsername;
         int permission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
         System.out.println("IN REQUETLOCATIONUPDATES");

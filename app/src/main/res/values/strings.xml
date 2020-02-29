@@ -1,4 +1,5 @@
 <resources>
+    <string name="userLocationFirebasse">users/</string>
     <string name="app_name">Meal sharing app</string>
     <string name="welcome_msg">Welcome!</string>
     <string name="sign_out">Sign Out</string>
