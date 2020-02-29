@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
@@ -62,7 +64,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
         holder.myposts_userName.setText(meal.getUserName());
 
-        holder.myposts_userImage.setImageResource(images[0]);
+        if (meal.getPhotoURL() != null){
+            String imageUrl = meal.getPhotoURL();
+            Glide.with(holder.myposts_userImage.getContext()).load(imageUrl).into(holder.myposts_userImage);
+        }
 
     }
 
@@ -92,4 +97,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
         }
     }
+
+
+
 }
