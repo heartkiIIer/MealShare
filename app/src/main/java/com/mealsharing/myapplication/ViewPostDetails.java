@@ -13,4 +13,5 @@ public class ViewPostDetails extends AppCompatActivity {
 
         setTitle("Post Details");
     }
+
 }

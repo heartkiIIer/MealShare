@@ -11,13 +11,13 @@
     card_view:cardMaxElevation="5dp"
     >
 
-    <RelativeLayout
-        android:id="@+id/myposts"
-        android:layout_width="fill_parent"
-        android:layout_height="202dp"
-        android:background="#ECEFF1"
-        android:clickable="true"
-        android:padding="10dp">
+<!--    <RelativeLayout-->
+<!--        android:id="@+id/myposts"-->
+<!--        android:layout_width="fill_parent"-->
+<!--        android:layout_height="202dp"-->
+<!--        android:background="#ECEFF1"-->
+<!--        android:clickable="true"-->
+<!--        android:padding="10dp">-->
 
         <TextView
             android:id="@+id/myposts_location"
@@ -96,6 +96,6 @@
             android:text="Post #" />
 
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 </androidx.cardview.widget.CardView>
 

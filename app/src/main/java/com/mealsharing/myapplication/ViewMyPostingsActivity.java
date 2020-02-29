@@ -6,11 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,7 +31,7 @@ import java.util.Map;
 
 import static android.util.JsonToken.NULL;
 
-public class ViewMyPostingsActivity extends AppCompatActivity {
+public class ViewMyPostingsActivity extends AppCompatActivity implements RecyclerViewClickInterface{
 //    database
     DatabaseReference databaseReference;
 //    cardviews
@@ -55,6 +57,9 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
         MyMealSwipesList=new ArrayList();
+
+        // context
+        final RecyclerViewClickInterface context = this;
 
 //        database
          databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
@@ -112,23 +117,9 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                             }
 
                         }
-                        adapter=new MyPostRecycleViewAdapter(MyMealSwipesList, new CustomItemClickListener() {
-                            @Override
-                            public void onItemClick(View v, int position) {
-                                Log.d(ViewMyPostingsActivity.class.toString(), "clicked position:" + position);
-                                //long postId = data.get(position).getID();
 
-                            }
-                        });
-//                        RelativeLayout rc1 = findViewById(R.id.myposts);
-//                        rc1.setOnClickListener(new View.OnClickListener(){
-//                            @Override
-//                            public void onClick(View v){
-//                                Log.d(ViewMyPostingsActivity.class.toString(), "clicked");
-//                            }
-//                        });
+                        MyPostRecycleViewAdapter adapter = new MyPostRecycleViewAdapter(MyMealSwipesList, context);
                         rv.setAdapter(adapter);
-                        System.out.println(("--------------------"));
                     }
 
                     @Override
@@ -139,4 +130,17 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemClick(int position) {
+        Toast.makeText(this, "hello", "hello".length());
+        Intent intent = new Intent(this, FindMealActivity.class);
+//        Intent intent = new Intent(this, ViewPostDetails.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onLongItemClick(int position) {
+
+    }
 }

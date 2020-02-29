@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -133,6 +134,10 @@ public class FindMealActivity extends AppCompatActivity implements RecyclerViewC
     @Override
     public void onItemClick(int position){
         Toast.makeText(this,"hello", "hello".length()).show();
+        Intent intent = new Intent(this, ViewMyPostingsActivity.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
+
     }
     @Override
     public void onLongItemClick(int position){

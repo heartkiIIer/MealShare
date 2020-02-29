@@ -15,14 +15,16 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
     Context context;
     List<MealSwipes> MyMealSwipesList;
-    CustomItemClickListener listener;
+//    CustomItemClickListener listener;
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
 
-    public MyPostRecycleViewAdapter( List<MealSwipes> TempList, CustomItemClickListener listener) {
+    public MyPostRecycleViewAdapter( List<MealSwipes> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
 
         this.MyMealSwipesList = TempList;
-        this.listener = listener;
+//        this.listener = listener;
         // this.context = context;
+        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @Override
@@ -32,12 +34,12 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                listener.onItemClick(v, viewHolder.getPosition());
-            }
-        });
+//        view.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v){
+//                listener.onItemClick(v, viewHolder.getPosition());
+//            }
+//        });
         return viewHolder;
     }
 
@@ -75,7 +77,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
         return MyMealSwipesList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView myposts_location;
         public TextView myposts_startTime;
@@ -90,7 +92,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
             super(itemView);
             //mOnClickListener = listener;
-            itemView.setOnClickListener(this);
+//            itemView.setOnClickListener(this);
 
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);
             myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
@@ -99,11 +101,19 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
             myposts_endTime = (TextView) itemView.findViewById(R.id.myposts_endTime);
             myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick (View view){
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                }
+            });
+
         }
 
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(v.getContext(), "Clicked item", Toast.LENGTH_SHORT).show();
-        }
+//        @Override
+//        public void onClick(View v) {
+//            Toast.makeText(v.getContext(), "Clicked item", Toast.LENGTH_SHORT).show();
+//        }
     }
 }
