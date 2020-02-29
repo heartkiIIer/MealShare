@@ -11,7 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyPostRecycleViewAdapter"></activity>
+        <activity android:name=".ViewPostDetails"></activity>
+        <activity android:name=".ViewMyRequestsActivity" />
+        <activity android:name=".MyPostRecycleViewAdapter" />
         <activity
             android:name=".ViewMyPostingsActivity"
             android:parentActivityName=".ShareMealOptionsActivity" />

@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.RelativeLayout;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -110,7 +112,21 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                             }
 
                         }
-                        adapter=new MyPostRecycleViewAdapter( MyMealSwipesList);
+                        adapter=new MyPostRecycleViewAdapter(MyMealSwipesList, new CustomItemClickListener() {
+                            @Override
+                            public void onItemClick(View v, int position) {
+                                Log.d(ViewMyPostingsActivity.class.toString(), "clicked position:" + position);
+                                //long postId = data.get(position).getID();
+
+                            }
+                        });
+//                        RelativeLayout rc1 = findViewById(R.id.myposts);
+//                        rc1.setOnClickListener(new View.OnClickListener(){
+//                            @Override
+//                            public void onClick(View v){
+//                                Log.d(ViewMyPostingsActivity.class.toString(), "clicked");
+//                            }
+//                        });
                         rv.setAdapter(adapter);
                         System.out.println(("--------------------"));
                     }
