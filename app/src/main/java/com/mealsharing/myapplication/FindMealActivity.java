@@ -8,18 +8,32 @@ import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class FindMealActivity extends AppCompatActivity {
+    //    database
+    DatabaseReference databaseReference;
+    //    cardviews
+    List<MealSwipes> MyMealSwipesList;
+    RecyclerView rv;
+    MyPostRecycleViewAdapter adapter;
+    //    Firebase
+    private String mUsername;
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
 
-    private static final String TAG = "FINDMEALQUERY";
-    private DatabaseReference mDatabaseReference;
-    RecyclerView recyclerView;
-
-    String test [] = {"im SHING", "im chau DOO", "im alex G", "im hoe li"};
+    // todo remove later
     int images [] = {R.drawable.com_facebook_profile_picture_blank_portrait,R.drawable.com_facebook_favicon_blue, R.drawable.common_google_signin_btn_icon_dark, R.drawable.com_facebook_profile_picture_blank_portrait};
-
 
 
     @Override
@@ -28,16 +42,93 @@ public class FindMealActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_meal);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        mDatabaseReference.child("Meals");
-        Log.d(TAG, "trying to debug");
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        mUsername = mFirebaseUser.getDisplayName();
 
-        recyclerView = findViewById(R.id.recycler_view);
+        // set up recycler view
+        rv = findViewById(R.id.recycler_view);
+        rv.setHasFixedSize(true);
+        rv.setLayoutManager((new LinearLayoutManager(this)));
+        MyMealSwipesList = new ArrayList();
+
+        // database
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
+        databaseReference.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        //Get map of users in datasnapshot
+//                        Log.i("DA", "dataSnapshot value = "+dataSnapshot.getValue());
+                        if(dataSnapshot.hasChildren()){
+                            Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+                            while (iter.hasNext()){
+                                DataSnapshot snap = iter.next();
+//                                String nodId = snap.getKey();
+                                String userName =(String) snap.child("userName").getValue();
+                                MealSwipes newMeal = new MealSwipes();
+
+                                if (userName!=null){
+                                    newMeal.setUserName(userName);
+                                    String locations = (String) snap.child("locations").getValue();
+                                    newMeal.setLocations(locations);
+
+                                    newMeal.setPhotoURL((String)snap.child("photoURL").getValue());
+                                    newMeal.setNumberMeals((String)snap.child("numberMeals").getValue());
+
+                                    int new_time=-1;
+                                    if (snap.child("startMinute").getValue()!=null){
+                                        Long time=((long)snap.child("startMinute").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setStartMinute(new_time);
+                                    if (snap.child("startHour").getValue()!=null){
+                                        Long time=((long)snap.child("startHour").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setStartHour(new_time);
+                                    if (snap.child("endHour").getValue()!=null){
+                                        Long time=((long)snap.child("endHour").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setEndHour(new_time);
+                                    if (snap.child("endMinute").getValue()!=null){
+                                        Long time=((long)snap.child("endMinute").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setEndMinute(new_time);
+                                    if (snap.child("requestCount").getValue()!=null){
+                                        Long time=((long)snap.child("requestCount").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setRequestCount(new_time);
+
+                                    String notes = (String) snap.child("notes").getValue();
+                                    newMeal.setNotes(notes);
+                                    MyMealSwipesList.add(newMeal);
+                                }
 
 
-        MyAdapter myAdapter = new MyAdapter(this, test, images);
-        recyclerView.setAdapter(myAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                            }
+
+                        }
+                        adapter=new MyPostRecycleViewAdapter( MyMealSwipesList);
+                        rv.setAdapter(adapter);
+                        System.out.println(("--------------------"));
+
+                        // create adapter for recycler view
+                        MyAdapter myAdapter = new MyAdapter(MyMealSwipesList, images);
+                        rv.setAdapter(myAdapter);
+//                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+                    }
+                });
+
+
 
     }
 }

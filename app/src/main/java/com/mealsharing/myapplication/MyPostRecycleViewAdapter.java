@@ -54,9 +54,6 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
-
-
-
     }
 
     @Override
@@ -72,8 +69,6 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
         public TextView myposts_endTime;
         public TextView myposts_notes;
         public TextView myposts_requestCount;
-
-
 
 
         public ViewHolder(View itemView) {

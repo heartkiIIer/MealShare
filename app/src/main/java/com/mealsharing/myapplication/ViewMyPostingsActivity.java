@@ -30,7 +30,6 @@ import static android.util.JsonToken.NULL;
 public class ViewMyPostingsActivity extends AppCompatActivity {
 //    database
     DatabaseReference databaseReference;
-
 //    cardviews
     List<MealSwipes> MyMealSwipesList;
     RecyclerView rv;
@@ -91,6 +90,11 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                                         new_time=time.intValue();
                                     }
                                     newMeal.setEndHour(new_time);
+                                    if (snap.child("endMinute").getValue()!=null){
+                                        Long time=((long)snap.child("endMinute").getValue());
+                                        new_time=time.intValue();
+                                    }
+                                    newMeal.setEndMinute(new_time);
                                     if (snap.child("requestCount").getValue()!=null){
                                         Long time=((long)snap.child("requestCount").getValue());
                                         new_time=time.intValue();
