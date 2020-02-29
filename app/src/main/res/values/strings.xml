@@ -34,4 +34,5 @@
         <item>Uranus</item>
         <item>Neptune</item>
     </string-array>
+    <string name="title_activity_location_sharing_maps">Find nearby sharers!</string>
 </resources>

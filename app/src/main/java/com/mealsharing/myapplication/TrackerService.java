@@ -40,7 +40,6 @@ public class TrackerService extends Service {
     public void onCreate() {
         super.onCreate();
         buildNotification();
-        loginToFirebase();
         requestLocationUpdates();
     }
 
@@ -68,10 +67,6 @@ public class TrackerService extends Service {
             stopSelf();
         }
     };
-
-    private void loginToFirebase() {
-        // Functionality coming next step
-    }
 
     private String getCurrentUserName(){
         //         Database stuff
