@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FindMealActivity extends AppCompatActivity {
+public class FindMealActivity extends AppCompatActivity implements RecyclerViewClickInterface{
     //    database
     DatabaseReference databaseReference;
     //    cardviews
@@ -51,6 +52,9 @@ public class FindMealActivity extends AppCompatActivity {
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
         MyMealSwipesList = new ArrayList();
+
+        // context
+        final RecyclerViewClickInterface context = this;
 
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
@@ -112,12 +116,9 @@ public class FindMealActivity extends AppCompatActivity {
                             }
 
                         }
-                        adapter=new MyPostRecycleViewAdapter( MyMealSwipesList);
-                        rv.setAdapter(adapter);
-                        System.out.println(("--------------------"));
 
                         // create adapter for recycler view
-                        MyAdapter myAdapter = new MyAdapter(MyMealSwipesList, images);
+                        MyAdapter myAdapter = new MyAdapter(MyMealSwipesList, context);
                         rv.setAdapter(myAdapter);
 //                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     }
@@ -127,8 +128,14 @@ public class FindMealActivity extends AppCompatActivity {
                         //handle databaseError
                     }
                 });
+    }
 
-
-
+    @Override
+    public void onItemClick(int position){
+        Toast.makeText(this,"hello", "hello".length()).show();
+    }
+    @Override
+    public void onLongItemClick(int position){
+        // do nothing
     }
 }

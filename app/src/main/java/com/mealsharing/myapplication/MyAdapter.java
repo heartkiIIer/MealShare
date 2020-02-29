@@ -18,13 +18,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     List<MealSwipes> MyMealSwipesList;
-    int images[];
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
 
-    public MyAdapter(List<MealSwipes> mealsList, int img[]){
+    public MyAdapter(List<MealSwipes> mealsList, RecyclerViewClickInterface recyclerViewClickInterface){
 //        context = ct;
         MyMealSwipesList = mealsList;
-        images = img;
+        this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
     @NonNull
@@ -95,6 +95,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             myposts_startTime = (TextView) itemView.findViewById(R.id.myposts_startTime);
             myposts_endTime = (TextView) itemView.findViewById(R.id.myposts_endTime);
             myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
+
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View view){
+                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+                }
+            });
+
+            // on long click
+
         }
     }
 
