@@ -10,6 +10,15 @@ public class Request {
     private String userName;
     private String photoURL;
     private String status="pending";
+    private String location;
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public Request() {
     }

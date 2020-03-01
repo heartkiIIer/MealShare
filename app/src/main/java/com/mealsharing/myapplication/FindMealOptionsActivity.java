@@ -29,6 +29,9 @@ public class FindMealOptionsActivity extends AppCompatActivity {
 
     }
     public void onViewRequest(View view) {
+        Intent intent = new Intent(this, FindMealViewMyRequestRecycleViewActiviy.class);
+//        intent.putExtra(EXTRA_MESSAGE, message);
+        startActivity(intent);
 
 
     }

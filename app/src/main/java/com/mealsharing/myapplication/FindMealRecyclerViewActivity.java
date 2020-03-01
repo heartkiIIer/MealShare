@@ -132,13 +132,15 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
     @Override
     public void onItemClick(int position){
         Toast.makeText(this,"hello", "hello".length()).show();
-        System.out.println("clicking on a post %i");
         System.out.println(position);
         MealSwipes current = MyMealSwipesList.get(position);
         String name=current.getUserName();
         System.out.println(name);
         Intent intent = new Intent(this, FindMealMakeRequest.class);
         intent.putExtra("MealPostID", current.getID());
+        System.out.println();
+        intent.putExtra("MealPostLocation", current.getLocations());
+
         startActivity(intent);
 
     }
