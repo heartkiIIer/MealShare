@@ -30,7 +30,7 @@
             android:layout_marginTop="26dp"
             android:layout_marginBottom="50dp"
             android:gravity="center"
-            android:text="From: "
+            android:text="Time"
             android:textColor="#000"
             android:textSize="20dp" />
 
@@ -72,6 +72,12 @@
             android:layout_marginRight="20dp"
             android:background="#EF5350"
             android:text="Reject" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
 
     </RelativeLayout>

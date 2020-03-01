@@ -53,7 +53,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
         holder.myposts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ViewMyRequestsActivity.class);
+                Intent intent = new Intent(context, MyPostViewRequest.class);
 //                intent.putExtra(EXTRA_MESSAGE, message);
                 context.startActivity(intent);
             }
