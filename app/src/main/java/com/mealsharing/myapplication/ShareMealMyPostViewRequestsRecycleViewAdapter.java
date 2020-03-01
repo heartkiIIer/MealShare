@@ -11,7 +11,7 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ShareMealMyRequestersRecycleViewAdapter extends RecyclerView.Adapter<ShareMealMyRequestersRecycleViewAdapter.ViewHolder> {
+public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.Adapter<ShareMealMyPostViewRequestsRecycleViewAdapter.ViewHolder> {
 
     Context context;
     List<Request> MyRequestsList;
@@ -19,7 +19,7 @@ public class ShareMealMyRequestersRecycleViewAdapter extends RecyclerView.Adapte
 
 
 
-    public ShareMealMyRequestersRecycleViewAdapter(List<Request> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public ShareMealMyPostViewRequestsRecycleViewAdapter(List<Request> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
 
         this.MyRequestsList = TempList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;

@@ -35,7 +35,7 @@
             android:name=".LocationSharingMapsActivity"
             android:label="@string/title_activity_location_sharing_maps"></activity>
         <activity android:name=".FindMealMakeRequest"></activity>
-        <activity android:name=".ShareMealMyRequestersRecyclerViewActivity" />
+        <activity android:name=".ShareMealMyPostViewRequestsRecyclerViewActivity" />
         <activity android:name=".ShareMealMyMyPostingsRecycleViewAdapter" />
         <activity
             android:name=".ShareMealMyPostingsRecyclerViewActivity"

@@ -11,7 +11,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import java.util.List;
 
-public class ShareMealMyRequestersRecyclerViewActivity extends AppCompatActivity {
+public class ShareMealMyPostViewRequestsRecyclerViewActivity extends AppCompatActivity {
     //    database
     DatabaseReference databaseReference;
 
@@ -27,7 +27,7 @@ public class ShareMealMyRequestersRecyclerViewActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_share_meal_my_requesters);
+        setContentView(R.layout.activity_share_meal_my_post_view_requests);
 
         setTitle("Post Details");
     }

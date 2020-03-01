@@ -51,7 +51,7 @@ public class ShareMealMyMyPostingsRecycleViewAdapter extends RecyclerView.Adapte
         holder.myposts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, ShareMealMyRequestersRecyclerViewActivity.class);
+                Intent intent = new Intent(context, ShareMealMyPostViewRequestsRecyclerViewActivity.class);
 //                intent.putExtra(EXTRA_MESSAGE, message);
                 context.startActivity(intent);
             }
