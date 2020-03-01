@@ -11,12 +11,10 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-<<<<<<< HEAD
+
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-=======
 import android.widget.ImageButton;
->>>>>>> remotes/origin/shing
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -128,11 +126,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
 
                         MyPostRecycleViewAdapter adapter = new MyPostRecycleViewAdapter(MyMealSwipesList, context);
                         rv.setAdapter(adapter);
-<<<<<<< HEAD
-=======
-                        System.out.println(("--------------------"));
 
->>>>>>> remotes/origin/shing
                     }
 
                     @Override
@@ -145,7 +139,6 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
 
     }
 
-<<<<<<< HEAD
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "hello", "hello".length());
@@ -159,8 +152,5 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
     public void onLongItemClick(int position) {
 
     }
-=======
 
-
->>>>>>> remotes/origin/shing
 }
