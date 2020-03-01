@@ -2,8 +2,10 @@ package com.mealsharing.myapplication;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,7 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class LocationSharingMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class LocationSharingMapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener,OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static final String TAG = LocationSharingMapsActivity.class.getSimpleName();
@@ -86,6 +88,8 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
 //        mMap.setOnMarkerClickListener(this);
 
         subscribeToUpdates();
+        mMap.setOnInfoWindowClickListener(this);
+
     }
     
 
@@ -127,8 +131,13 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
         double lat = Double.parseDouble(value.get("latitude").toString());
         double lng = Double.parseDouble(value.get("longitude").toString());
         LatLng location = new LatLng(lat, lng);
+//        need locations, number of meals, time
         if (!mMarkers.containsKey(key)) {
-            mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location)));
+            mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location).snippet("TEST")));
+//            get username as key
+//            find where that user offers meal swipe
+
+//            put that as snippet
         } else {
             mMarkers.get(key).setPosition(location);
         }
@@ -162,5 +171,17 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
             builder.include(marker.getPosition());
         }
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 300));
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+
+        Toast.makeText(this, "Info window clicked",
+                Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, FindMealMakeRequest.class);
+
+//        intent.putExtra("MealPostID", current.getID());
+//        intent.putExtra("MealPostLocation", current.getLocations());
+        // TODO: 3/1/2020 switch to intent and pass mealID
     }
 }

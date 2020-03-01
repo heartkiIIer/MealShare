@@ -138,7 +138,6 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
         System.out.println(name);
         Intent intent = new Intent(this, FindMealMakeRequest.class);
         intent.putExtra("MealPostID", current.getID());
-        System.out.println();
         intent.putExtra("MealPostLocation", current.getLocations());
 
         startActivity(intent);
