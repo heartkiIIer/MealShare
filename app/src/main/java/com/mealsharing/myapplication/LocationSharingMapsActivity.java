@@ -84,11 +84,7 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
 
         subscribeToUpdates();
     }
-
-    private void setLocationsMarker(){
-
-
-    }
+    
 
     private void subscribeToUpdates() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(getString(R.string.userLocationFirebasse));
@@ -133,7 +129,7 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
         } else {
             mMarkers.get(key).setPosition(location);
         }
-//        todo change marker image 
+//        todo change marker image
         CC = mMap.addMarker(new MarkerOptions()
                 .position(CCLocation)
                 .title("Perth"));
