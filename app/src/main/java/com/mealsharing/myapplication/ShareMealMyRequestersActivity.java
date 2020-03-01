@@ -27,7 +27,7 @@ import java.util.Map;
 
 import static android.util.JsonToken.NULL;
 
-public class ViewMyPostRequestsActivity {
+public class ShareMealMyRequestersActivity {
     //    database
     DatabaseReference databaseReference;
 

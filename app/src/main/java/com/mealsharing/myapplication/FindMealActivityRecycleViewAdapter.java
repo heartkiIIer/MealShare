@@ -14,14 +14,14 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class FindMealActivityRecycleViewAdapter extends RecyclerView.Adapter<FindMealActivityRecycleViewAdapter.MyViewHolder> {
 
     Context context;
     List<MealSwipes> MyMealSwipesList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
 
-    public MyAdapter(List<MealSwipes> mealsList, RecyclerViewClickInterface recyclerViewClickInterface){
+    public FindMealActivityRecycleViewAdapter(List<MealSwipes> mealsList, RecyclerViewClickInterface recyclerViewClickInterface){
 //        context = ct;
         MyMealSwipesList = mealsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
@@ -31,11 +31,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 //        LayoutInflater inflater = LayoutInflater.from(context);
-//        View view = inflater.inflate(R.layout.recycleview_meal_post_row, parent,false);
+//        View view = inflater.inflate(R.layout.recycleview_find_meal, parent,false);
 //        return new MyViewHolder(view);
 
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_meal_post_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_find_meal, parent, false);
 
         MyViewHolder viewHolder = new MyViewHolder(view);
 
@@ -43,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FindMealActivityRecycleViewAdapter.MyViewHolder holder, int position) {
 
         MealSwipes meal = MyMealSwipesList.get(position);
         holder.myposts_location.setText(meal.getLocations());

@@ -4,10 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -119,8 +117,8 @@ public class FindMealActivity extends AppCompatActivity implements RecyclerViewC
                         }
 
                         // create adapter for recycler view
-                        MyAdapter myAdapter = new MyAdapter(MyMealSwipesList, context);
-                        rv.setAdapter(myAdapter);
+                        FindMealActivityRecycleViewAdapter findMealActivityRecycleViewAdapter = new FindMealActivityRecycleViewAdapter(MyMealSwipesList, context);
+                        rv.setAdapter(findMealActivityRecycleViewAdapter);
 //                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     }
 
@@ -134,7 +132,7 @@ public class FindMealActivity extends AppCompatActivity implements RecyclerViewC
     @Override
     public void onItemClick(int position){
         Toast.makeText(this,"hello", "hello".length()).show();
-        Intent intent = new Intent(this, ViewMyPostingsActivity.class);
+        Intent intent = new Intent(this, FindMealMakeRequest.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
 

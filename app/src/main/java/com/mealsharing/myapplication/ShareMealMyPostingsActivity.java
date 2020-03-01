@@ -1,40 +1,28 @@
 package com.mealsharing.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
-import android.widget.RelativeLayout;
 import android.widget.Toast;
-import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
-import static android.util.JsonToken.NULL;
-
-public class ViewMyPostingsActivity extends AppCompatActivity implements RecyclerViewClickInterface{
+public class ShareMealMyPostingsActivity extends AppCompatActivity implements RecyclerViewClickInterface{
 
     // Context
     public Context context = this;
@@ -58,7 +46,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_my_postings);
+        setContentView(R.layout.activity_share_meal_my_postings);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
@@ -149,7 +137,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
     public void onItemClick(int position) {
         Toast.makeText(this, "hello", "hello".length());
         Intent intent = new Intent(this, FindMealActivity.class);
-//        Intent intent = new Intent(this, ViewPostDetails.class);
+//        Intent intent = new Intent(this, FindMealMakeRequest.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }

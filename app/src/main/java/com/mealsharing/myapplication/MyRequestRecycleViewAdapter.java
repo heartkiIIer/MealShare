@@ -15,20 +15,21 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
 
     Context context;
     List<Request> MyRequestsList;
-    CustomItemClickListener listener;
+    private RecyclerViewClickInterface recyclerViewClickInterface;
 
 
-    public MyRequestRecycleViewAdapter( List<Request> TempList, CustomItemClickListener listener) {
+
+    public MyRequestRecycleViewAdapter( List<Request> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
 
         this.MyRequestsList = TempList;
-        this.listener = listener;
+        this.recyclerViewClickInterface = recyclerViewClickInterface;
         // this.context = context;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_myposts, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_share_meal_my_postings, parent, false);
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
@@ -84,7 +85,6 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
         public ViewHolder(View itemView) {
 
             super(itemView);
-            //mOnClickListener = listener;
             itemView.setOnClickListener(this);
 
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);

@@ -5,11 +5,9 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_myposts, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycleview_share_meal_my_postings, parent, false);
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
