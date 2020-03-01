@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ViewMyRequestsActivity extends AppCompatActivity {
+public class MyPostViewRequest extends AppCompatActivity {
 
     //    database
     DatabaseReference databaseReference;

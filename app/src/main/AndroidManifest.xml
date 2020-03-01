@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ViewPostDetails"></activity>
-        <activity android:name=".ViewMyRequestsActivity" />
+        <activity android:name=".MyPostViewRequest" />
         <activity android:name=".MyPostRecycleViewAdapter" />
         <activity
             android:name=".ViewMyPostingsActivity"
