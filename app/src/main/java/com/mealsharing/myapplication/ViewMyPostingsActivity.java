@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,6 +42,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
         mUsername = mFirebaseUser.getDisplayName();
 
         rv= (RecyclerView)findViewById(R.id.ViewMyPostRecyclerView);
+
 //        set layout
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
@@ -67,9 +71,11 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                             Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
-//                                String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
+                                String nodId = snap.getKey();
                                 MealSwipes newMeal = new MealSwipes();
+                                if (nodId != null) {
+                                   String userName =(String) snap.child("userName").getValue();
+                                   newMeal.setID(nodId);
                                 if (userName!=null && userName.equals(mUsername)){
                                     newMeal.setUserName(userName);
                                     String locations = (String) snap.child("locations").getValue();
@@ -100,7 +106,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                                     String notes = (String) snap.child("notes").getValue();
                                     newMeal.setNotes(notes);
                                     MyMealSwipesList.add(newMeal);
-                                }
+                                } }
 
 
                             }
@@ -109,14 +115,19 @@ public class ViewMyPostingsActivity extends AppCompatActivity {
                         adapter=new MyPostRecycleViewAdapter( MyMealSwipesList);
                         rv.setAdapter(adapter);
                         System.out.println(("--------------------"));
+
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         //handle databaseError
                     }
+
+
                 });
 
     }
+
+
 
 }

@@ -76,6 +76,15 @@
             android:layout_toRightOf="@+id/myposts_notes"
             android:text="Request #" />
 
+        <ImageButton
+            android:id="@+id/myposts_deleteButton"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/myposts_requestCount"
+            android:layout_toRightOf="@+id/myposts_endTime"
+            android:layout_marginLeft="210dp"
+            android:src="@android:drawable/ic_menu_delete"/>
+
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

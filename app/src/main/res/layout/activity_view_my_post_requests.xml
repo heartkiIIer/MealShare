@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewMyPostingsActivity">
+    tools:context=".ViewMyPostRequestsActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/ViewMyPostRecyclerView"
+        android:id="@+id/ViewMyPostRequestsRecyclerView"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

@@ -1,9 +1,28 @@
 package com.mealsharing.myapplication;
 
 public class MealSwipes {
+    private String ID;
     private String userName;
     private String locations;
     private int requestCount;
+    private String numberMeals;
+    private String userImg ;
+    private String fromTime;
+    private String toTime;
+    private String notes;
+    private int startHour;
+    private int startMinute;
+    private int endHour;
+    private int endMinute;
+    private String photoURL;
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 
     public String getNumberMeals() {
         return numberMeals;
@@ -77,16 +96,6 @@ public class MealSwipes {
         this.endMinute = endMinute;
     }
 
-    private String numberMeals;
-    private String userImg ;
-    private String fromTime;
-    private String toTime;
-    private String notes;
-    private int startHour;
-    private int startMinute;
-    private int endHour;
-    private int endMinute;
-
     public String getPhotoURL() {
         return photoURL;
     }
@@ -94,31 +103,6 @@ public class MealSwipes {
     public void setPhotoURL(String photoURL) {
         this.photoURL = photoURL;
     }
-
-    private String photoURL;
-
-    public MealSwipes(){
-
-    }
-
-    public MealSwipes(String name, String photoURL, String locations, int requestCount, String numberMeals, String userImg, String notes,
-                      int startHour, int startMinute, int endHour, int endMinute){
-        this.userName=name;
-        this.photoURL=photoURL;
-        this.locations=locations;
-        this.requestCount = requestCount;
-        this.numberMeals=numberMeals;
-        this.userImg=userImg;
-        this.startHour=startHour;
-        this.endHour=endHour;
-        this.startMinute=startMinute;
-        this.endMinute=endMinute;
-        this.notes=notes;
-
-    }
-//    public void toString(){
-//        System.out.println(this.userName+" "+this.locations+" "+this.notes);
-//    }
 
     public String getLocations() {
         return locations;
@@ -143,4 +127,28 @@ public class MealSwipes {
     public void setRequestCount(int requestCount) {
         this.requestCount = requestCount;
     }
+
+    public MealSwipes(){
+
+    }
+
+    public MealSwipes( String name, String photoURL, String locations, int requestCount, String numberMeals, String userImg, String notes,
+                      int startHour, int startMinute, int endHour, int endMinute){
+        this.userName=name;
+        this.photoURL=photoURL;
+        this.locations=locations;
+        this.requestCount = requestCount;
+        this.numberMeals=numberMeals;
+        this.userImg=userImg;
+        this.startHour=startHour;
+        this.endHour=endHour;
+        this.startMinute=startMinute;
+        this.endMinute=endMinute;
+        this.notes=notes;
+
+    }
+//    public void toString(){
+//        System.out.println(this.userName+" "+this.locations+" "+this.notes);
+//    }
+
 }
