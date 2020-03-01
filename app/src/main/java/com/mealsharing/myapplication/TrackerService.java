@@ -91,7 +91,7 @@ public class TrackerService extends Service {
         if (permission == PackageManager.PERMISSION_GRANTED) {
             // Request location updates and when an update is
             // received, store the location in Firebase
-//            System.out.println("IF PERMISSION IS GRANTED");
+            System.out.println("IF PERMISSION IS GRANTED");
             client.requestLocationUpdates(request, new LocationCallback() {
                 @Override
                 public void onLocationResult(LocationResult locationResult) {

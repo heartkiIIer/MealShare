@@ -60,7 +60,7 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
         MyMealSwipesList=new ArrayList();
 
 //        database
-         databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
+        databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
         databaseReference.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override

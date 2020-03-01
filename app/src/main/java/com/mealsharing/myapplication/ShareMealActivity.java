@@ -131,7 +131,11 @@ public class ShareMealActivity extends AppCompatActivity {
         MealSwipes newMeal= new MealSwipes(mUsername, mPhotoUrl, locations, 0, numberMeals,userImg, notes,
                 startHour, startMinute, endHour, endMinute);
         mDatabaseReference.child("Meals").push().setValue(newMeal);
-        DatabaseReference newMealId = mDatabaseReference.child("Meals");
+        final String path = getString(R.string.userLocationFirebasse) + mUsername+"/"+"mealswipe";
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
+        ref.push().setValue(newMeal);
+//        mDatabaseReference.child("Users/")
+//        DatabaseReference newMealId = mDatabaseReference.child("Meals");
         Toast.makeText(this, "Thank you for ending hunger!", Toast.LENGTH_LONG).show();
 
 

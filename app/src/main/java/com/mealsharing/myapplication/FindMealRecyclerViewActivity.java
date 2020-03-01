@@ -30,6 +30,7 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
+    private String userInMap="";
 
     // todo remove later
     int images [] = {R.drawable.com_facebook_profile_picture_blank_portrait,R.drawable.com_facebook_favicon_blue, R.drawable.common_google_signin_btn_icon_dark, R.drawable.com_facebook_profile_picture_blank_portrait};
@@ -54,6 +55,27 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
         // context
         final RecyclerViewClickInterface context = this;
 
+
+//        check if it'click from map
+        Intent intent = getIntent();
+        try {
+            userInMap=intent.getExtras().getString("userInMap");
+        }
+        catch (Exception e){
+            Toast.makeText(this, "this is not from the map", Toast.LENGTH_SHORT).show();
+        }
+        if (userInMap.isEmpty()){
+            Toast.makeText(this, "this is not from the map", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "this is from the map" + userInMap, Toast.LENGTH_SHORT).show();
+
+        }
+
+
+//        String userInMap = intent.getExtras().getString("userInMap");
+//        Toast.makeText(this, "this is from the map", Toast.LENGTH_SHORT).show();
+
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
         databaseReference.addListenerForSingleValueEvent(
@@ -64,57 +86,113 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
 //                        Log.i("DA", "dataSnapshot value = "+dataSnapshot.getValue());
                         if(dataSnapshot.hasChildren()){
                             Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
-                            while (iter.hasNext()){
-                                DataSnapshot snap = iter.next();
-                                String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
-                                MealSwipes newMeal = new MealSwipes();
-                                newMeal.setID(nodId);
+                                if (userInMap.isEmpty()){
+                                    while (iter.hasNext()){
+                                        DataSnapshot snap = iter.next();
+                                        String nodId = snap.getKey();
+                                    String userName =(String) snap.child("userName").getValue();
+                                    MealSwipes newMeal = new MealSwipes();
+                                    newMeal.setID(nodId);
 
-                                if (userName!=null){
-                                    newMeal.setUserName(userName);
-                                    String locations = (String) snap.child("locations").getValue();
-                                    newMeal.setLocations(locations);
+                                    if (userName!=null){
+                                        newMeal.setUserName(userName);
+                                        String locations = (String) snap.child("locations").getValue();
+                                        newMeal.setLocations(locations);
 
-                                    newMeal.setPhotoURL((String)snap.child("photoURL").getValue());
-                                    newMeal.setNumberMeals((String)snap.child("numberMeals").getValue());
+                                        newMeal.setPhotoURL((String)snap.child("photoURL").getValue());
+                                        newMeal.setNumberMeals((String)snap.child("numberMeals").getValue());
 
-                                    int new_time=-1;
-                                    if (snap.child("startMinute").getValue()!=null){
-                                        Long time=((long)snap.child("startMinute").getValue());
-                                        new_time=time.intValue();
-                                    }
-                                    newMeal.setStartMinute(new_time);
-                                    if (snap.child("startHour").getValue()!=null){
-                                        Long time=((long)snap.child("startHour").getValue());
-                                        new_time=time.intValue();
-                                    }
-                                    newMeal.setStartHour(new_time);
-                                    if (snap.child("endHour").getValue()!=null){
-                                        Long time=((long)snap.child("endHour").getValue());
-                                        new_time=time.intValue();
-                                    }
-                                    newMeal.setEndHour(new_time);
-                                    if (snap.child("endMinute").getValue()!=null){
-                                        Long time=((long)snap.child("endMinute").getValue());
-                                        new_time=time.intValue();
-                                    }
-                                    newMeal.setEndMinute(new_time);
-                                    if (snap.child("requestCount").getValue()!=null){
-                                        Long time=((long)snap.child("requestCount").getValue());
-                                        new_time=time.intValue();
-                                    }
-                                    newMeal.setRequestCount(new_time);
+                                        int new_time=-1;
+                                        if (snap.child("startMinute").getValue()!=null){
+                                            Long time=((long)snap.child("startMinute").getValue());
+                                            new_time=time.intValue();
+                                        }
+                                        newMeal.setStartMinute(new_time);
+                                        if (snap.child("startHour").getValue()!=null){
+                                            Long time=((long)snap.child("startHour").getValue());
+                                            new_time=time.intValue();
+                                        }
+                                        newMeal.setStartHour(new_time);
+                                        if (snap.child("endHour").getValue()!=null){
+                                            Long time=((long)snap.child("endHour").getValue());
+                                            new_time=time.intValue();
+                                        }
+                                        newMeal.setEndHour(new_time);
+                                        if (snap.child("endMinute").getValue()!=null){
+                                            Long time=((long)snap.child("endMinute").getValue());
+                                            new_time=time.intValue();
+                                        }
+                                        newMeal.setEndMinute(new_time);
+                                        if (snap.child("requestCount").getValue()!=null){
+                                            Long time=((long)snap.child("requestCount").getValue());
+                                            new_time=time.intValue();
+                                        }
+                                        newMeal.setRequestCount(new_time);
 
-                                    String notes = (String) snap.child("notes").getValue();
-                                    newMeal.setNotes(notes);
-                                    MyMealSwipesList.add(newMeal);
+                                        String notes = (String) snap.child("notes").getValue();
+                                        newMeal.setNotes(notes);
+                                        MyMealSwipesList.add(newMeal);
+                                    }
+
                                 }
+
+
+                            }
+                            else {
+                                    while (iter.hasNext()){
+                                        DataSnapshot snap = iter.next();
+                                        String nodId = snap.getKey();
+                                        String userName =(String) snap.child("userName").getValue();
+                                        MealSwipes newMeal = new MealSwipes();
+                                        newMeal.setID(nodId);
+
+                                        if (userName!=null && userName.equals(userInMap)){
+                                            newMeal.setUserName(userName);
+                                            String locations = (String) snap.child("locations").getValue();
+                                            newMeal.setLocations(locations);
+
+                                            newMeal.setPhotoURL((String)snap.child("photoURL").getValue());
+                                            newMeal.setNumberMeals((String)snap.child("numberMeals").getValue());
+
+                                            int new_time=-1;
+                                            if (snap.child("startMinute").getValue()!=null){
+                                                Long time=((long)snap.child("startMinute").getValue());
+                                                new_time=time.intValue();
+                                            }
+                                            newMeal.setStartMinute(new_time);
+                                            if (snap.child("startHour").getValue()!=null){
+                                                Long time=((long)snap.child("startHour").getValue());
+                                                new_time=time.intValue();
+                                            }
+                                            newMeal.setStartHour(new_time);
+                                            if (snap.child("endHour").getValue()!=null){
+                                                Long time=((long)snap.child("endHour").getValue());
+                                                new_time=time.intValue();
+                                            }
+                                            newMeal.setEndHour(new_time);
+                                            if (snap.child("endMinute").getValue()!=null){
+                                                Long time=((long)snap.child("endMinute").getValue());
+                                                new_time=time.intValue();
+                                            }
+                                            newMeal.setEndMinute(new_time);
+                                            if (snap.child("requestCount").getValue()!=null){
+                                                Long time=((long)snap.child("requestCount").getValue());
+                                                new_time=time.intValue();
+                                            }
+                                            newMeal.setRequestCount(new_time);
+
+                                            String notes = (String) snap.child("notes").getValue();
+                                            newMeal.setNotes(notes);
+                                            MyMealSwipesList.add(newMeal);
+                                        }
+
+                                    }
 
 
                             }
 
                         }
+
 
                         // create adapter for recycler view
                         FindMealRecycleViewAdapter findMealRecycleViewAdapter = new FindMealRecycleViewAdapter(MyMealSwipesList, context);

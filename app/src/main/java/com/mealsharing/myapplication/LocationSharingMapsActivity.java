@@ -1,5 +1,6 @@
 package com.mealsharing.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -15,13 +16,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 public class LocationSharingMapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener,OnMapReadyCallback {
 
@@ -41,12 +46,18 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
     private static final LatLng PODLocation = new LatLng(42.2735, -71.8106);
     private static final LatLng GoatHeadLocation = new LatLng(42.2734, -71.8054);
     private static final LatLng LibraryLocation = new LatLng(42.2742, -71.8065);
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private String mUsername;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_sharing_maps);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        mUsername = mFirebaseUser.getDisplayName();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -136,6 +147,35 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
             mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location).snippet("TEST")));
 //            get username as key
 //            find where that user offers meal swipe
+            String FirebasePath= "user/"+ mUsername + "/mealswipe";
+            DatabaseReference mealRef= FirebaseDatabase.getInstance().getReference(FirebasePath);
+            System.out.println("IN LOATION SHARING MAPS");
+            mealRef.child("locations");
+
+//            mealRef.addListenerForSingleValueEvent(
+//                    new ValueEventListener() {
+//                        @Override
+//                        public void onDataChange(DataSnapshot dataSnapshot) {
+//                            //Get map of users in datasnapshot
+//                        Log.i("DA", "dataSnapshot value = "+dataSnapshot.getValue());
+//                            if (dataSnapshot.hasChildren()) {
+//                                Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+//                                while (iter.hasNext()) {
+//                                    DataSnapshot snap = iter.next();
+////                                    String nodId = snap.getKey();
+//
+////                                        MyRequestsList.add(newRequest);
+//                                }
+//
+//
+//                            }
+//                        }
+//
+//                        @Override
+//                        public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                        }
+//                    });
 
 //            put that as snippet
         } else {
@@ -178,9 +218,13 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
 
         Toast.makeText(this, "Info window clicked",
                 Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, FindMealMakeRequest.class);
+        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
 
-//        intent.putExtra("MealPostID", current.getID());
+        String userClicked = marker.getTitle();
+//        get key
+        intent.putExtra("userInMap", userClicked);
+        startActivity(intent);
+
 //        intent.putExtra("MealPostLocation", current.getLocations());
         // TODO: 3/1/2020 switch to intent and pass mealID
     }
