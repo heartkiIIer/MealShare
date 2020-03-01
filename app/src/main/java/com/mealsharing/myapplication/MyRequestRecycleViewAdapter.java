@@ -11,16 +11,16 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycleViewAdapter.ViewHolder> {
+public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestRecycleViewAdapter.ViewHolder> {
 
     Context context;
-    List<MealSwipes> MyMealSwipesList;
+    List<Request> MyRequestsList;
     CustomItemClickListener listener;
 
 
-    public MyPostRecycleViewAdapter( List<MealSwipes> TempList, CustomItemClickListener listener) {
+    public MyRequestRecycleViewAdapter( List<Request> TempList, CustomItemClickListener listener) {
 
-        this.MyMealSwipesList = TempList;
+        this.MyRequestsList = TempList;
         this.listener = listener;
         // this.context = context;
     }
@@ -32,12 +32,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
-        view.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                listener.onItemClick(v, viewHolder.getPosition());
-            }
-        });
+
         return viewHolder;
     }
 
@@ -45,10 +40,10 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        MealSwipes meal = MyMealSwipesList.get(position);
+        Request reqs = MyRequestsList.get(position);
 
 
-
+/*
         holder.myposts_location.setText(meal.getLocations());
 
         String startTime = Integer.toString(meal.getStartHour());
@@ -65,14 +60,14 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
-
+*/
 
     }
 
     @Override
     public int getItemCount() {
 
-        return MyMealSwipesList.size();
+        return MyRequestsList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{

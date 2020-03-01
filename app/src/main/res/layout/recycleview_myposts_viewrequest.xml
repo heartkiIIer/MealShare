@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardview_req"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    card_view:cardElevation="5dp"
+    card_view:contentPadding="5dp"
+    card_view:cardCornerRadius="5dp"
+    card_view:cardMaxElevation="5dp">
+
+    <RelativeLayout
+        android:id="@+id/myposts"
+        android:layout_width="fill_parent"
+        android:layout_height="140dp"
+        android:background="#ECEFF1"
+        android:clickable="true"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/myposts_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginBottom="50dp"
+            android:gravity="center"
+            android:text="Time"
+            android:textColor="#000"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/myposts_requestCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="47dp"
+            android:layout_marginRight="47dp"
+            android:layout_marginBottom="65dp"
+            android:text="Request #" />
+
+        <Button
+            android:id="@+id/accept_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="120dp"
+            android:layout_marginRight="120dp"
+            android:background="#66BB6A"
+            android:text="Accept" />
+
+        <Button
+            android:id="@+id/reject_request"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:background="#EF5350"
+            android:text="Reject" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -30,6 +30,7 @@ public class FindMealOptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_meal_options);
+        setTitle("Find a Meal");
     }
     public void onFindMealButton(View view) {
         Intent intent = new Intent(this, FindMealActivity.class);

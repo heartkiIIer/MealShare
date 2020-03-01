@@ -24,6 +24,10 @@
     <string name="sharelocation_label">Where will you use the swipes?</string>
     <string name="postbutton">Post</string>
     <string name="mealShareSuccess">Thank you for ending hunger!</string>
+    <string name="share_meal_view_button">View My Posts</string>
+    <string name="share_meal_make_post">Make a Meal Share Post</string>
+    <string name="find_meal_button">Find meals</string>
+    <string name="view_request_button">View Requests</string>
     <string-array name="meals_amount">
         <item>Mercury</item>
         <item>Venus</item>

@@ -34,6 +34,8 @@
         <activity
             android:name=".LocationSharingMapsActivity"
             android:label="@string/title_activity_location_sharing_maps"></activity>
+        <activity android:name=".ViewPostDetails"></activity>
+        <activity android:name=".MyPostViewRequest" />
         <activity android:name=".MyPostRecycleViewAdapter" />
         <activity
             android:name=".ViewMyPostingsActivity"
