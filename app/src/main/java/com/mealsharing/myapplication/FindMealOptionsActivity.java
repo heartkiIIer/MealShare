@@ -7,20 +7,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
-
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class FindMealOptionsActivity extends AppCompatActivity {
     private static final int PERMISSIONS_REQUEST = 1;
@@ -33,7 +23,7 @@ public class FindMealOptionsActivity extends AppCompatActivity {
         setTitle("Find a Meal");
     }
     public void onFindMealButton(View view) {
-        Intent intent = new Intent(this, FindMealActivity.class);
+        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
 

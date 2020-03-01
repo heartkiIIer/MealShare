@@ -24,7 +24,7 @@ public class ShareMealOptionsActivity extends AppCompatActivity {
 
     }
     public void onViewPost(View view) {
-        Intent intent = new Intent(this, ShareMealMyPostingsActivity.class);
+        Intent intent = new Intent(this, ShareMealMyPostingsRecyclerViewActivity.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
 

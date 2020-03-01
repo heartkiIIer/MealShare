@@ -14,14 +14,14 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class FindMealActivityRecycleViewAdapter extends RecyclerView.Adapter<FindMealActivityRecycleViewAdapter.MyViewHolder> {
+public class FindMealRecycleViewAdapter extends RecyclerView.Adapter<FindMealRecycleViewAdapter.MyViewHolder> {
 
     Context context;
     List<MealSwipes> MyMealSwipesList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
 
 
-    public FindMealActivityRecycleViewAdapter(List<MealSwipes> mealsList, RecyclerViewClickInterface recyclerViewClickInterface){
+    public FindMealRecycleViewAdapter(List<MealSwipes> mealsList, RecyclerViewClickInterface recyclerViewClickInterface){
 //        context = ct;
         MyMealSwipesList = mealsList;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
@@ -43,7 +43,7 @@ public class FindMealActivityRecycleViewAdapter extends RecyclerView.Adapter<Fin
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FindMealActivityRecycleViewAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FindMealRecycleViewAdapter.MyViewHolder holder, int position) {
 
         MealSwipes meal = MyMealSwipesList.get(position);
         holder.myposts_location.setText(meal.getLocations());

@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,43 +22,45 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class FindMealActivity extends AppCompatActivity implements RecyclerViewClickInterface{
+public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity implements RecyclerViewClickInterface{
+
+    // Context
+    public Context context = this;
+
+    // RecyclerViewClickInterface context
+    final RecyclerViewClickInterface rvContext = this;
+
+
     //    database
     DatabaseReference databaseReference;
-    //    cardviews
+//    cardviews
     List<MealSwipes> MyMealSwipesList;
     RecyclerView rv;
-    MyPostRecycleViewAdapter adapter;
-    //    Firebase
+    ShareMealMyMyPostingsRecycleViewAdapter adapter;
+//    Firebase
     private String mUsername;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
-
-    // todo remove later
-    int images [] = {R.drawable.com_facebook_profile_picture_blank_portrait,R.drawable.com_facebook_favicon_blue, R.drawable.common_google_signin_btn_icon_dark, R.drawable.com_facebook_profile_picture_blank_portrait};
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_meal);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_share_meal_my_postings);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = mFirebaseAuth.getCurrentUser();
         mUsername = mFirebaseUser.getDisplayName();
 
-        // set up recycler view
-        rv = findViewById(R.id.recycler_view);
+        rv= (RecyclerView)findViewById(R.id.ViewMyPostRecyclerView);
+
+//        set layout
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
-        MyMealSwipesList = new ArrayList();
+        MyMealSwipesList=new ArrayList();
 
-        // context
-        final RecyclerViewClickInterface context = this;
-
-        // database
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
+//        database
+         databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
         databaseReference.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
@@ -67,17 +71,15 @@ public class FindMealActivity extends AppCompatActivity implements RecyclerViewC
                             Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
-//                                String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
+                                String nodId = snap.getKey();
                                 MealSwipes newMeal = new MealSwipes();
-
-                                if (userName!=null){
+                                if (nodId != null) {
+                                   String userName =(String) snap.child("userName").getValue();
+                                   newMeal.setID(nodId);
+                                if (userName!=null && userName.equals(mUsername)){
                                     newMeal.setUserName(userName);
                                     String locations = (String) snap.child("locations").getValue();
                                     newMeal.setLocations(locations);
-
-                                    newMeal.setPhotoURL((String)snap.child("photoURL").getValue());
-                                    newMeal.setNumberMeals((String)snap.child("numberMeals").getValue());
 
                                     int new_time=-1;
                                     if (snap.child("startMinute").getValue()!=null){
@@ -109,36 +111,40 @@ public class FindMealActivity extends AppCompatActivity implements RecyclerViewC
                                     String notes = (String) snap.child("notes").getValue();
                                     newMeal.setNotes(notes);
                                     MyMealSwipesList.add(newMeal);
-                                }
+                                } }
 
 
                             }
 
                         }
 
-                        // create adapter for recycler view
-                        FindMealActivityRecycleViewAdapter findMealActivityRecycleViewAdapter = new FindMealActivityRecycleViewAdapter(MyMealSwipesList, context);
-                        rv.setAdapter(findMealActivityRecycleViewAdapter);
-//                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+                        ShareMealMyMyPostingsRecycleViewAdapter adapter = new ShareMealMyMyPostingsRecycleViewAdapter(context, MyMealSwipesList, rvContext);
+                        rv.setAdapter(adapter);
+
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         //handle databaseError
                     }
+
+
                 });
+
     }
 
     @Override
-    public void onItemClick(int position){
-        Toast.makeText(this,"hello", "hello".length()).show();
-        Intent intent = new Intent(this, FindMealMakeRequest.class);
+    public void onItemClick(int position) {
+        Toast.makeText(this, "hello", "hello".length());
+        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+//        Intent intent = new Intent(this, FindMealMakeRequest.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
+    }
+
+    @Override
+    public void onLongItemClick(int position) {
 
     }
-    @Override
-    public void onLongItemClick(int position){
-        // do nothing
-    }
+
 }

@@ -1,29 +1,35 @@
 package com.mealsharing.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestRecycleViewAdapter.ViewHolder> {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+public class ShareMealMyMyPostingsRecycleViewAdapter extends RecyclerView.Adapter<ShareMealMyMyPostingsRecycleViewAdapter.ViewHolder> {
 
     Context context;
-    List<Request> MyRequestsList;
+    DatabaseReference databaseReference;
+    List<MealSwipes> MyMealSwipesList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
+    private int previousPosition = 0;
 
 
+    public ShareMealMyMyPostingsRecycleViewAdapter(Context ct , List<MealSwipes> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
 
-    public MyRequestRecycleViewAdapter( List<Request> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
-
-        this.MyRequestsList = TempList;
+        this.MyMealSwipesList = TempList;
+         this.context = ct;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
-        // this.context = context;
     }
 
     @Override
@@ -33,7 +39,6 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
-
         return viewHolder;
     }
 
@@ -41,10 +46,17 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Request reqs = MyRequestsList.get(position);
+        MealSwipes meal = MyMealSwipesList.get(position);
 
+        holder.myposts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ShareMealMyRequestersRecyclerViewActivity.class);
+//                intent.putExtra(EXTRA_MESSAGE, message);
+                context.startActivity(intent);
+            }
+        });
 
-/*
         holder.myposts_location.setText(meal.getLocations());
 
         String startTime = Integer.toString(meal.getStartHour());
@@ -61,32 +73,42 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
 
         holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
-*/
+        final int currentPosition = position;
+
+        previousPosition = position;
+
+        final MealSwipes infoData = MyMealSwipesList.get(position);
+
+        holder.myposts_deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeItem(infoData);
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
 
-        return MyRequestsList.size();
+        return MyMealSwipesList.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
+        public RelativeLayout myposts;
         public TextView myposts_location;
         public TextView myposts_startTime;
         public TextView myposts_endTime;
         public TextView myposts_notes;
         public TextView myposts_requestCount;
-
-
-
+        public ImageButton myposts_deleteButton;
 
         public ViewHolder(View itemView) {
 
             super(itemView);
-            itemView.setOnClickListener(this);
 
+            myposts = itemView.findViewById(R.id.myposts);
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);
             myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
 
@@ -94,11 +116,21 @@ public class MyRequestRecycleViewAdapter extends RecyclerView.Adapter<MyRequestR
 
             myposts_endTime = (TextView) itemView.findViewById(R.id.myposts_endTime);
             myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
+
+            myposts_deleteButton = (ImageButton) itemView.findViewById(R.id.myposts_deleteButton);
+
         }
 
-        @Override
-        public void onClick(View v) {
-            Toast.makeText(v.getContext(), "Clicked item", Toast.LENGTH_SHORT).show();
-        }
     }
+
+
+    private void removeItem(MealSwipes infoData) {
+        DatabaseReference drMeal = FirebaseDatabase.getInstance().getReference("Meals").child(infoData.getID());
+        int currPosition = MyMealSwipesList.indexOf(infoData);
+        MyMealSwipesList.remove(currPosition);
+        drMeal.removeValue();
+        notifyItemRemoved(currPosition);
+    }
+
+
 }
