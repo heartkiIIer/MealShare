@@ -77,33 +77,9 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        mMap.setMaxZoomPreference(16);
-
-        // Add some markers to the map, and add a data object to each marker.
-//        CC = mMap.addMarker(new MarkerOptions()
-//                .position(CCLocation)
-//                .title("Perth"));
-//        CC.setTag(0);
-//
-//        POD = mMap.addMarker(new MarkerOptions()
-//                .position(PODLocation)
-//                .title("Sydney"));
-//        POD.setTag(0);
-//
-//        GoatHead = mMap.addMarker(new MarkerOptions()
-//                .position(GoatHeadLocation)
-//                .title("Brisbane"));
-//        GoatHead.setTag(0);
-
-        // Set a listener for marker click.
-//        mMap.setOnMarkerClickListener(this);
-
         subscribeToUpdates();
         mMap.setOnInfoWindowClickListener(this);
-
     }
-    
-
     private void subscribeToUpdates() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(getString(R.string.userLocationFirebasse));
         ref.addChildEventListener(new ChildEventListener() {
@@ -142,41 +118,12 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         double lat = Double.parseDouble(value.get("latitude").toString());
         double lng = Double.parseDouble(value.get("longitude").toString());
         LatLng location = new LatLng(lat, lng);
-//        need locations, number of meals, time
         if (!mMarkers.containsKey(key)) {
             mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location).snippet("TEST")));
-//            get username as key
-//            find where that user offers meal swipe
-            String FirebasePath= "user/"+ mUsername + "/mealswipe";
-            DatabaseReference mealRef= FirebaseDatabase.getInstance().getReference(FirebasePath);
-            System.out.println("IN LOATION SHARING MAPS");
-            mealRef.child("locations");
-
-//            mealRef.addListenerForSingleValueEvent(
-//                    new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(DataSnapshot dataSnapshot) {
-//                            //Get map of users in datasnapshot
-//                        Log.i("DA", "dataSnapshot value = "+dataSnapshot.getValue());
-//                            if (dataSnapshot.hasChildren()) {
-//                                Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
-//                                while (iter.hasNext()) {
-//                                    DataSnapshot snap = iter.next();
-////                                    String nodId = snap.getKey();
-//
-////                                        MyRequestsList.add(newRequest);
-//                                }
-//
-//
-//                            }
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                        }
-//                    });
-
+//            String FirebasePath= "user/"+ mUsername + "/mealswipe";
+//            DatabaseReference mealRef= FirebaseDatabase.getInstance().getReference(FirebasePath);
+//            System.out.println("IN LOATION SHARING MAPS");
+//            mealRef.child("locations");
 //            put that as snippet
         } else {
             mMarkers.get(key).setPosition(location);
@@ -225,7 +172,5 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         intent.putExtra("userInMap", userClicked);
         startActivity(intent);
 
-//        intent.putExtra("MealPostLocation", current.getLocations());
-        // TODO: 3/1/2020 switch to intent and pass mealID
     }
 }
