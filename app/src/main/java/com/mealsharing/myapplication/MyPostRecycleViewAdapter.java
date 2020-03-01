@@ -1,11 +1,13 @@
 package com.mealsharing.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,18 +20,17 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycleViewAdapter.ViewHolder> {
 
-    DatabaseReference databaseReference;
     Context context;
+    DatabaseReference databaseReference;
     List<MealSwipes> MyMealSwipesList;
     private RecyclerViewClickInterface recyclerViewClickInterface;
     private int previousPosition = 0;
 
 
-    public MyPostRecycleViewAdapter( List<MealSwipes> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
+    public MyPostRecycleViewAdapter(Context ct , List<MealSwipes> TempList, RecyclerViewClickInterface recyclerViewClickInterface) {
 
         this.MyMealSwipesList = TempList;
-//        this.listener = listener;
-        // this.context = context;
+         this.context = ct;
         this.recyclerViewClickInterface = recyclerViewClickInterface;
     }
 
@@ -40,12 +41,6 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         final ViewHolder viewHolder = new ViewHolder(view);
 
-//        view.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v){
-//                listener.onItemClick(v, viewHolder.getPosition());
-//            }
-//        });
         return viewHolder;
     }
 
@@ -55,7 +50,14 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
         MealSwipes meal = MyMealSwipesList.get(position);
 
-
+        holder.myposts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, ViewMyRequestsActivity.class);
+//                intent.putExtra(EXTRA_MESSAGE, message);
+                context.startActivity(intent);
+            }
+        });
 
         holder.myposts_location.setText(meal.getLocations());
 
@@ -84,8 +86,6 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
             public void onClick(View v) {
                 removeItem(infoData);
             }
-
-
         });
 
     }
@@ -98,6 +98,7 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
+        public RelativeLayout myposts;
         public TextView myposts_location;
         public TextView myposts_startTime;
         public TextView myposts_endTime;
@@ -108,9 +109,8 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
         public ViewHolder(View itemView) {
 
             super(itemView);
-            //mOnClickListener = listener;
-//            itemView.setOnClickListener(this);
 
+            myposts = itemView.findViewById(R.id.myposts);
             myposts_location = (TextView) itemView.findViewById(R.id.myposts_location);
             myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
 
@@ -120,15 +120,6 @@ public class MyPostRecycleViewAdapter extends RecyclerView.Adapter<MyPostRecycle
             myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
 
             myposts_deleteButton = (ImageButton) itemView.findViewById(R.id.myposts_deleteButton);
-
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick (View view){
-                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                }
-            });
-
-
 
         }
 

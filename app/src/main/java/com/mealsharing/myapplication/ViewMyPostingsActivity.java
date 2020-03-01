@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
@@ -34,7 +35,15 @@ import java.util.Map;
 import static android.util.JsonToken.NULL;
 
 public class ViewMyPostingsActivity extends AppCompatActivity implements RecyclerViewClickInterface{
-//    database
+
+    // Context
+    public Context context = this;
+
+    // RecyclerViewClickInterface context
+    final RecyclerViewClickInterface rvContext = this;
+
+
+    //    database
     DatabaseReference databaseReference;
 //    cardviews
     List<MealSwipes> MyMealSwipesList;
@@ -61,9 +70,6 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
         MyMealSwipesList=new ArrayList();
-
-        // context
-        final RecyclerViewClickInterface context = this;
 
 //        database
          databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
@@ -124,7 +130,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
 
                         }
 
-                        MyPostRecycleViewAdapter adapter = new MyPostRecycleViewAdapter(MyMealSwipesList, context);
+                        MyPostRecycleViewAdapter adapter = new MyPostRecycleViewAdapter(context, MyMealSwipesList, rvContext);
                         rv.setAdapter(adapter);
 
                     }
