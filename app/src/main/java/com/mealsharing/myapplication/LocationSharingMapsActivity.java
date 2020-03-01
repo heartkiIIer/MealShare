@@ -31,12 +31,15 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
     private Marker CC;
     private Marker POD;
     private Marker GoatHead;
+    private Marker Library;
     //        CC 42.2748, -71.8084
 //        POD 42.2735, -71.8106
 //        Goat Head 42.2734, -71.8054
     private static final LatLng CCLocation = new LatLng(42.2748, -71.8084);
     private static final LatLng PODLocation = new LatLng(42.2735, -71.8106);
     private static final LatLng GoatHeadLocation = new LatLng(42.2734, -71.8054);
+    private static final LatLng LibraryLocation = new LatLng(42.2742, -71.8065);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,21 +135,28 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
 //        todo change marker image
         CC = mMap.addMarker(new MarkerOptions()
                 .position(CCLocation)
-                .title("Perth"));
+                .title("Campus Center"));
         CC.setTag(0);
 
         POD = mMap.addMarker(new MarkerOptions()
                 .position(PODLocation)
-                .title("Sydney"));
+                .title("POD"));
         POD.setTag(0);
 
         GoatHead = mMap.addMarker(new MarkerOptions()
                 .position(GoatHeadLocation)
-                .title("Brisbane"));
+                .title("GoatsHead"));
+
+        Library = mMap.addMarker(new MarkerOptions()
+                .position(LibraryLocation)
+                .title("Library"));
+
         GoatHead.setTag(0);
         mMarkers.put("CC", CC);
         mMarkers.put("POD", POD);
         mMarkers.put("GoatHead", GoatHead);
+        mMarkers.put("Library", Library);
+
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (Marker marker : mMarkers.values()) {
             builder.include(marker.getPosition());
