@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <RelativeLayout
+=======
+<androidx.constraintlayout.widget.ConstraintLayout
+>>>>>>> remotes/origin/shing
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,6 +28,10 @@
 
 
 
+<<<<<<< HEAD
 
 
 </RelativeLayout>
+=======
+</androidx.constraintlayout.widget.ConstraintLayout>
+>>>>>>> remotes/origin/shing

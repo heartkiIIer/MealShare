@@ -11,8 +11,12 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+<<<<<<< HEAD
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+=======
+import android.widget.ImageButton;
+>>>>>>> remotes/origin/shing
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -43,6 +47,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
         mUsername = mFirebaseUser.getDisplayName();
 
         rv= (RecyclerView)findViewById(R.id.ViewMyPostRecyclerView);
+
 //        set layout
         rv.setHasFixedSize(true);
         rv.setLayoutManager((new LinearLayoutManager(this)));
@@ -73,9 +79,11 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
                             Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
-//                                String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
+                                String nodId = snap.getKey();
                                 MealSwipes newMeal = new MealSwipes();
+                                if (nodId != null) {
+                                   String userName =(String) snap.child("userName").getValue();
+                                   newMeal.setID(nodId);
                                 if (userName!=null && userName.equals(mUsername)){
                                     newMeal.setUserName(userName);
                                     String locations = (String) snap.child("locations").getValue();
@@ -111,7 +119,7 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
                                     String notes = (String) snap.child("notes").getValue();
                                     newMeal.setNotes(notes);
                                     MyMealSwipesList.add(newMeal);
-                                }
+                                } }
 
 
                             }
@@ -120,16 +128,24 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
 
                         MyPostRecycleViewAdapter adapter = new MyPostRecycleViewAdapter(MyMealSwipesList, context);
                         rv.setAdapter(adapter);
+<<<<<<< HEAD
+=======
+                        System.out.println(("--------------------"));
+
+>>>>>>> remotes/origin/shing
                     }
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
                         //handle databaseError
                     }
+
+
                 });
 
     }
 
+<<<<<<< HEAD
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "hello", "hello".length());
@@ -143,4 +159,8 @@ public class ViewMyPostingsActivity extends AppCompatActivity implements Recycle
     public void onLongItemClick(int position) {
 
     }
+=======
+
+
+>>>>>>> remotes/origin/shing
 }
