@@ -4,15 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/main_header_selector">
 
     <TextView
         android:id="@+id/welcomelabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="212dp"
+        android:fontFamily="@font/quicksand"
         android:text="@string/welcome_txt"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#FFFFFF"
+        android:textSize="32sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/welcomelabel2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -24,16 +29,19 @@
 
     <Button
         android:id="@+id/FindMealButton"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
+        android:layout_width="206dp"
+        android:layout_height="48dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/quicksand"
         android:onClick="onFindMeal"
         android:text="@string/lookbutton_txt"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SharingMeal"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -48,23 +56,33 @@
 
     <Button
         android:id="@+id/SharingMeal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="206dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/quicksand"
         android:onClick="onShareMeal"
         android:text="@string/sharebutton_txt"
+        android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <TextView
         android:id="@+id/welcomelabel2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_width="234dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/quicksand"
         android:text="@string/welcome2_txt"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textColor="#AD3D3A3A"
+        android:textSize="18sp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

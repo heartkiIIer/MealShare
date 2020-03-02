@@ -8,13 +8,18 @@
     <string name="invitation_message">Please join me </string>
     <string name="invitation_cta">Call to action</string>
     <string name="invitation_title">Fix </string>
-    <string name="sign_in">Sign In</string>
+    <string name="sign_in_slogan">Conquering On-campus Starvation</string>
+    <string name="sign_in_gmail">Sign in via Google to Proceed</string>
+    <string name="sign_in">MealShare</string>
     <string name="sign_up">Sign Up</string>
     <string name="fresh_config">Fresh Config</string>
     <string name="cause_crash">Cause Crash</string>
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="welcome_txt">Welcome to MealShare!</string>
     <string name="lookbutton_txt">Look for a Meal</string>
+    <string name="request_number">How many would you like to request?</string>
+    <string name="drop_down_prompt">(Select from the drop-down below)</string>
+    <string name="pick_time_prompt">Pick a time:</string>
     <string name="sharebutton_txt">Share a Meal</string>
     <string name="welcome2_txt">What would you like to do?</string>
     <string name="share_start">Start Time:</string>
