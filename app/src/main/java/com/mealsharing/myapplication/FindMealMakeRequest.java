@@ -92,7 +92,7 @@ public class FindMealMakeRequest extends AppCompatActivity {
         newRequest.setHour(specificTimePicker.getHour());
         newRequest.setMinute(specificTimePicker.getMinute());
         newRequest.setNotes(notesEditText.getText().toString());
-        newRequest.setUserName(mUsername);
+        newRequest.setUserNamefrom(mUsername);
         newRequest.setPhotoURL(mPhotoUrl);
         newRequest.setLocation(locationRequest);
 //        add to database

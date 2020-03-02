@@ -59,7 +59,7 @@ public class FindMealViewMyRequestAdapter extends RecyclerView.Adapter<FindMealV
 
 //        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
-//        holder.myposts_userName.setText(meal.getUserName());
+//        holder.myposts_userName.setText(meal.getUserNamefrom());
 
 
 

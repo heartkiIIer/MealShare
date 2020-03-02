@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,8 +42,6 @@ public class FindMealViewMyRequestRecycleViewActiviy extends AppCompatActivity {
         rv.setLayoutManager((new LinearLayoutManager(this)));
         MyRequestsList = new ArrayList();
 
-        // context
-//        final RecyclerViewClickInterface context = this;
 
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Requests");
@@ -68,7 +64,7 @@ public class FindMealViewMyRequestRecycleViewActiviy extends AppCompatActivity {
                                 if (userName.equals(mUsername)){
                                     String mealPostID =(String) snap.child("mealPostID").getValue();
                                     newRequest.setMealPostID(mealPostID);
-                                    newRequest.setUserName((String)snap.child("userName").getValue());
+                                    newRequest.setUserNamefrom((String)snap.child("userNamefrom").getValue());
                                     String locations = (String) snap.child("location").getValue();
                                     newRequest.setLocation(locations);
 
@@ -109,26 +105,6 @@ public class FindMealViewMyRequestRecycleViewActiviy extends AppCompatActivity {
                     }
                 });
     }
-
-//    @Override
-//    public void onItemClick(int position){
-////        Toast.makeText(this,"hello", "hello".length()).show();
-////        System.out.println("clicking on a post %i");
-////        System.out.println(position);
-////        MealSwipes current = MyMealSwipesList.get(position);
-////        String name=current.getUserName();
-////        System.out.println(name);
-////        Intent intent = new Intent(this, FindMealMakeRequest.class);
-////        intent.putExtra("MealPostID", current.getID());
-////        intent.putExtra("MealPostLocation", current.getLocations());
-////
-////        startActivity(intent);
-//
-//    }
-//    @Override
-//    public void onLongItemClick(int position){
-//        // do nothing
-//    }
 
 
 }

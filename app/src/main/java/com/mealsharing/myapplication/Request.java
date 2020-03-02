@@ -7,7 +7,7 @@ public class Request {
     private String notes;
     private int hour;
     private int minute;
-    private String userName;
+    private String userNamefrom;
     private String photoURL;
     private String status="pending";
     private String location;
@@ -31,28 +31,31 @@ public class Request {
         return mealPostID;
     }
 
-    public Request(String requestID, String mealPostID, String numberOfMeals, String notes, int hour, int minute, String userName, String photoURL, String status) {
+    public Request(String requestID, String mealPostID, String numberOfMeals, String notes, int hour, int minute, String userNamefrom, String photoURL, String status) {
         this.requestID = requestID;
         this.mealPostID = mealPostID;
         this.numberOfMeals = numberOfMeals;
+
         this.notes = notes;
         this.hour = hour;
         this.minute = minute;
-        this.userName = userName;
+        this.userNamefrom = userNamefrom;
         this.photoURL = photoURL;
         this.status = status;
     }
 
-    public Request(String requestID, String numberOfMeals, String notes, int hour, int minute, String userName, String photoURL, String status) {
+    public Request(String requestID, String numberOfMeals, String notes, int hour, int minute, String userNamefrom, String photoURL, String status) {
         this.requestID = requestID;
         this.numberOfMeals = numberOfMeals;
         this.notes = notes;
         this.hour = hour;
         this.minute = minute;
-        this.userName = userName;
+        this.userNamefrom = userNamefrom;
         this.photoURL = photoURL;
         this.status = status;
     }
+
+
 
     public String getRequestID() {
         return requestID;
@@ -74,8 +77,8 @@ public class Request {
         return minute;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUserNamefrom() {
+        return userNamefrom;
     }
 
     public String getPhotoURL() {
@@ -106,8 +109,8 @@ public class Request {
         this.minute = minute;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserNamefrom(String userNamefrom) {
+        this.userNamefrom = userNamefrom;
     }
 
     public void setPhotoURL(String photoURL) {

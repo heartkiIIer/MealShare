@@ -136,9 +136,25 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "hello", "hello".length());
-        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+//        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
 //        Intent intent = new Intent(this, FindMealMakeRequest.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
+
+
+        // todo where is the delete button??
+        // todo send information from here
+//        Toast.makeText(this,"hello", "hello".length()).show();
+//        System.out.println(position);
+//        MealSwipes current = MyMealSwipesList.get(position);
+//        String name=current.getUserName();
+//        System.out.println(name);
+//        Intent intent = new Intent(this, FindMealMakeRequest.class);
+//        intent.putExtra("MealPostID", current.getID());
+//        System.out.println();
+//        intent.putExtra("MealPostLocation", current.getLocations());
+
+
         startActivity(intent);
     }
 
