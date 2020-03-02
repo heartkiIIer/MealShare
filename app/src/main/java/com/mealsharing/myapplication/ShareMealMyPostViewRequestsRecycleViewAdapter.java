@@ -53,6 +53,8 @@ public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.
 
         holder.myposts_requestCount.setText(reqs.getNumberOfMeals());
 
+        holder.myposts_userNamefrom.setText(reqs.getUserNamefrom());
+
     }
 
     @Override
@@ -64,6 +66,7 @@ public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
 //        public TextView myposts_location;
+        public TextView myposts_userNamefrom;
         public TextView myposts_startTime;
 //        public TextView myposts_notes;
         public TextView myposts_requestCount;
@@ -77,11 +80,14 @@ public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.
             super(itemView);
             itemView.setOnClickListener(this);
 
+            myposts_userNamefrom = itemView.findViewById(R.id.myposts_userNamefrom);
+
             myposts_requestCount = (TextView) itemView.findViewById(R.id.myposts_requestCount);
 
             myposts_startTime = (TextView) itemView.findViewById(R.id.myposts_startTime);
 
 //            myposts_notes= (TextView) itemView.findViewById(R.id.myposts_notes);
+
 
             myposts_accept = itemView.findViewById(R.id.accept_request);
             myposts_reject = itemView.findViewById(R.id.reject_request);

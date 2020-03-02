@@ -1,5 +1,6 @@
 package com.mealsharing.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,6 +48,10 @@ public class ShareMealMyPostViewRequestsRecyclerViewActivity extends AppCompatAc
         rv.setLayoutManager((new LinearLayoutManager(this)));
         MyRequestsList = new ArrayList();
 
+        // get info from previos intent
+        Intent intent = getIntent();
+        final String mMealPostID = intent.getExtras().getString("MealPostID");
+
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Requests");
         databaseReference.addListenerForSingleValueEvent(
@@ -60,16 +65,17 @@ public class ShareMealMyPostViewRequestsRecyclerViewActivity extends AppCompatAc
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
                                 String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
+//                                String userName =(String) snap.child("userName").getValue();
+                                String mealPostID =(String) snap.child("mealPostID").getValue();
 
                                 Request newRequest = new Request();
                                 newRequest.setRequestID(nodId);
                                 // todo Get the specific request corresponding with the specific mealSwipeID
                                 // TODO: 3/1/2020 check thisto check for deleted meal post
-//                                if (userName.equals(mUsername)){
-                                if (true){
+                                if (mealPostID.equals(mMealPostID)){
+//                                if (true){
 
-                                    String mealPostID =(String) snap.child("mealPostID").getValue();
+//                                    String mealPostID =(String) snap.child("mealPostID").getValue();
                                     newRequest.setMealPostID(mealPostID);
                                     newRequest.setUserNamefrom((String)snap.child("userNamefrom").getValue());
                                     String locations = (String) snap.child("location").getValue();
