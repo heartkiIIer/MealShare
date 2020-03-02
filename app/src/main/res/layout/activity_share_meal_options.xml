@@ -4,30 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareMealOptionsActivity">
+    tools:context=".ShareMealOptionsActivity"
+    android:background="@drawable/share_meal_options_header_selector">
 
     <Button
         android:id="@+id/ViewPostsButton"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/share_meal_circle"
+        android:drawableTop="@android:drawable/ic_menu_view"
+        android:fontFamily="@font/quicksand"
         android:onClick="onViewPost"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
         android:text="@string/share_meal_view_button"
+        android:textColor="#fff"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <Button
         android:id="@+id/MakePostsButton"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/share_meal_circle"
+        android:drawableTop="@android:drawable/ic_dialog_map"
+        android:fontFamily="@font/quicksand"
         android:onClick="onMakeMealShare"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
         android:text="@string/share_meal_make_post"
+        android:textColor="#fff"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ViewPostsButton"
-        app:layout_constraintVertical_bias="0.079" />
+        app:layout_constraintVertical_bias="0.184" />
 </androidx.constraintlayout.widget.ConstraintLayout>

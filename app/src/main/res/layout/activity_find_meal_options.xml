@@ -4,38 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FindMealOptionsActivity">
+    tools:context=".FindMealOptionsActivity"
+    android:background="@drawable/find_meal_options_header_selector">
 
     <Button
         android:id="@+id/FindMealButton"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/find_meal_circle"
+        android:drawableTop="@android:drawable/ic_search"
+        android:fontFamily="@font/quicksand"
         android:onClick="onFindMealButton"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
         android:text="@string/find_meal_button"
+        android:textColor="#fff"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.172" />
 
     <Button
         android:id="@+id/ViewRequestButton"
-        android:layout_width="0dp"
-        android:layout_height="63dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/find_meal_circle"
+        android:drawableTop="@android:drawable/ic_menu_view"
+        android:fontFamily="@font/quicksand"
         android:onClick="onViewRequest"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
         android:text="@string/view_request_button"
+        android:textColor="#fff"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/MapButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/find_meal_circle"
+        android:drawableTop="@android:drawable/ic_dialog_map"
+        android:fontFamily="@font/quicksand"
+        android:paddingTop="40dp"
+        android:paddingBottom="30dp"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        android:text="@string/find_meal_map_button"
         android:onClick="onMapButton"
-        android:text="Map"
         app:layout_constraintBottom_toTopOf="@+id/ViewRequestButton"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FindMealButton" />
+        app:layout_constraintTop_toBottomOf="@+id/FindMealButton"
+        app:layout_constraintVertical_bias="0.524" />
 </androidx.constraintlayout.widget.ConstraintLayout>

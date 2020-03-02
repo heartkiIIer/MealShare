@@ -17,21 +17,22 @@
     <string name="banner_ad_unit_id" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
     <string name="welcome_txt">Welcome to MealShare!</string>
     <string name="lookbutton_txt">Look for a Meal</string>
-    <string name="request_number">How many would you like to request?</string>
+    <string name="request_number">\# of swipes I\'m looking for:</string>
     <string name="drop_down_prompt">(Select from the drop-down below)</string>
-    <string name="pick_time_prompt">Pick a time:</string>
+    <string name="pick_time_prompt">I\'m looking for a swipe at:</string>
     <string name="sharebutton_txt">Share a Meal</string>
     <string name="welcome2_txt">What would you like to do?</string>
-    <string name="share_start">Start Time:</string>
-    <string name="share_end">End Time:</string>
+    <string name="share_start">I\'m offering meal swipes from:</string>
+    <string name="share_end">Until:</string>
     <string name="noteslabel">Notes:</string>
-    <string name="share_label">How many swipes are you sharing?</string>
-    <string name="sharelocation_label">Where will you use the swipes?</string>
-    <string name="postbutton">Post</string>
+    <string name="share_label">\# of swipes I\'m offering:</string>
+    <string name="sharelocation_label">I\'m sharing swipes at:</string>
+    <string name="postbutton">Share</string>
     <string name="mealShareSuccess">Thank you for ending hunger!</string>
     <string name="share_meal_view_button">View My Posts</string>
     <string name="share_meal_make_post">Make a Meal Share Post</string>
     <string name="find_meal_button">Find meals</string>
+    <string name="find_meal_map_button">Map</string>
     <string name="view_request_button">View Requests</string>
     <string-array name="meals_amount">
         <item>Mercury</item>

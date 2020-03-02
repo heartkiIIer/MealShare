@@ -65,7 +65,7 @@ public class FindMealViewMyRequestAdapter extends RecyclerView.Adapter<FindMealV
 
     }
 
-    // TODO: 3/1/2020 add delete button 
+    // TODO: 3/1/2020 add delete request_button
     @Override
     public int getItemCount() {
         return MyRequestsList.size();
