@@ -1,5 +1,6 @@
 package com.mealsharing.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -20,6 +21,9 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ShareMealMyPostViewRequestsRecyclerViewActivity extends AppCompatActivity {
+    // context
+    Context context = this;
+
     //    database
     DatabaseReference databaseReference;
 
@@ -107,7 +111,7 @@ public class ShareMealMyPostViewRequestsRecyclerViewActivity extends AppCompatAc
                         }
 
                         // create adapter for recycler view
-                        ShareMealMyPostViewRequestsRecycleViewAdapter shareMealMyPostViewRequestsRecycleViewAdapter = new ShareMealMyPostViewRequestsRecycleViewAdapter(MyRequestsList);
+                        ShareMealMyPostViewRequestsRecycleViewAdapter shareMealMyPostViewRequestsRecycleViewAdapter = new ShareMealMyPostViewRequestsRecycleViewAdapter(context,MyRequestsList);
                         rv.setAdapter(shareMealMyPostViewRequestsRecycleViewAdapter);
 //                        recyclerView.setLayoutManager(new LinearLayoutManager(this));
                     }

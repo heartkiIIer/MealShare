@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -56,11 +59,16 @@ public class FindMealViewMyRequestRecycleViewActiviy extends AppCompatActivity {
                             while (iter.hasNext()){
                                 DataSnapshot snap = iter.next();
                                 String nodId = snap.getKey();
-                                String userName =(String) snap.child("userName").getValue();
+                                String userName =(String) snap.child("userNamefrom").getValue();
 
                                 Request newRequest = new Request();
                                 newRequest.setRequestID(nodId);
                                 // TODO: 3/1/2020 check thisto check for deleted meal post
+
+                                Log.e("MYREQUESTS", "musername is :");
+                                Log.e("MYREQUESTS", mUsername);
+                                Log.e("MYREQUESTS", "DB username is :");
+                                Log.e("MYREQUESTS", userName);
                                 if (userName.equals(mUsername)){
                                     String mealPostID =(String) snap.child("mealPostID").getValue();
                                     newRequest.setMealPostID(mealPostID);
