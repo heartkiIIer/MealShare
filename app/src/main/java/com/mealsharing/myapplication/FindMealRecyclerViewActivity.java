@@ -101,7 +101,7 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
                                     }
                                     newMeal.setEndMinute(new_time);
                                     if (snap.child("requestCount").getValue()!=null){
-                                        Long time=((long)snap.child("requestCount").getValue());
+                                        Long time= (long)snap.child("requestCount").getValue();
                                         new_time=time.intValue();
                                     }
                                     newMeal.setRequestCount(new_time);
