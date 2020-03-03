@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -15,10 +16,14 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class FindMealMakeRequest extends AppCompatActivity {
@@ -74,12 +79,43 @@ public class FindMealMakeRequest extends AppCompatActivity {
     public void onMakeRequestButton(View view){
         System.out.println("CLICKING MAKE REQUEST");
         Intent intent = getIntent();
-        String mealPostID = intent.getExtras().getString("MealPostID");
+        final String mealPostID = intent.getExtras().getString("MealPostID");
         String locationRequest = intent.getExtras().getString("MealPostLocation");
+        String userNameto = intent.getExtras().getString("userNameto");
 
 //        create request object
-        Request newRequest= new Request();
+        final Request newRequest= new Request();
         newRequest.setMealPostID(mealPostID);
+
+        // count how many requests have this specific mealPostID
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Meals");
+        // Attach a listener to read the data at our posts reference
+        Long value = Long.valueOf(0);
+        ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Long value = Long.valueOf(0);
+
+                if(dataSnapshot.hasChildren()){
+                    Iterator<DataSnapshot> iter = dataSnapshot.getChildren().iterator();
+                    while (iter.hasNext()){
+                        DataSnapshot snap = iter.next();
+                        String nodId = snap.getKey();
+                        if(nodId.equals(mealPostID)){
+                            value = (long)(snap.child("requestCount").getValue());
+                            value += Long.valueOf(1);
+                            Log.e("test", String.valueOf(value));
+                            FirebaseDatabase.getInstance().getReference().child("Meals").child(mealPostID).child("requestCount").setValue(value);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+        });
 
         String numberMeals="";
         if (numberMealsRequestedSpinner.getSelectedItem()==null){
@@ -92,12 +128,12 @@ public class FindMealMakeRequest extends AppCompatActivity {
         newRequest.setHour(specificTimePicker.getHour());
         newRequest.setMinute(specificTimePicker.getMinute());
         newRequest.setNotes(notesEditText.getText().toString());
-        newRequest.setUserName(mUsername);
+        newRequest.setUserNamefrom(mUsername);
+        newRequest.setUserNameto(userNameto);
         newRequest.setPhotoURL(mPhotoUrl);
         newRequest.setLocation(locationRequest);
 //        add to database
         mDatabaseReference.child("Requests").push().setValue(newRequest);
-//        DatabaseReference newMealId = mDatabaseReference.child("Meals");
 
         Toast.makeText(this, "Wish your hunger to end!", Toast.LENGTH_SHORT).show();
 

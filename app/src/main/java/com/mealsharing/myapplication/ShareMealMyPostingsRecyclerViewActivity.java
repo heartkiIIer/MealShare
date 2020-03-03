@@ -60,7 +60,7 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
         MyMealSwipesList=new ArrayList();
 
 //        database
-         databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
+        databaseReference =FirebaseDatabase.getInstance().getReference().child("Meals");
         databaseReference.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
@@ -103,7 +103,8 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
                                     }
                                     newMeal.setEndMinute(new_time);
                                     if (snap.child("requestCount").getValue()!=null){
-                                        Long time=((long)snap.child("requestCount").getValue());
+//                                        Long time=((long)snap.child("requestCount").getValue());
+                                        Long time= (long)(snap.child("requestCount").getValue());
                                         new_time=time.intValue();
                                     }
                                     newMeal.setRequestCount(new_time);
@@ -136,9 +137,11 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
     @Override
     public void onItemClick(int position) {
         Toast.makeText(this, "hello", "hello".length());
-        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+//        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
 //        Intent intent = new Intent(this, FindMealMakeRequest.class);
 //        intent.putExtra(EXTRA_MESSAGE, message);
+
         startActivity(intent);
     }
 

@@ -1,27 +1,43 @@
 package com.mealsharing.myapplication;
 
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
-public class LocationSharingMapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class LocationSharingMapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener,OnMapReadyCallback {
 
     private GoogleMap mMap;
     private static final String TAG = LocationSharingMapsActivity.class.getSimpleName();
@@ -31,17 +47,26 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
     private Marker CC;
     private Marker POD;
     private Marker GoatHead;
+    private Marker Library;
     //        CC 42.2748, -71.8084
 //        POD 42.2735, -71.8106
 //        Goat Head 42.2734, -71.8054
     private static final LatLng CCLocation = new LatLng(42.2748, -71.8084);
     private static final LatLng PODLocation = new LatLng(42.2735, -71.8106);
     private static final LatLng GoatHeadLocation = new LatLng(42.2734, -71.8054);
+    private static final LatLng LibraryLocation = new LatLng(42.2742, -71.8065);
+    private FirebaseAuth mFirebaseAuth;
+    private FirebaseUser mFirebaseUser;
+    private String mUsername;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_sharing_maps);
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        mFirebaseUser = mFirebaseAuth.getCurrentUser();
+        mUsername = mFirebaseUser.getDisplayName();
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -61,31 +86,9 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        mMap.setMaxZoomPreference(16);
-
-        // Add some markers to the map, and add a data object to each marker.
-//        CC = mMap.addMarker(new MarkerOptions()
-//                .position(CCLocation)
-//                .title("Perth"));
-//        CC.setTag(0);
-//
-//        POD = mMap.addMarker(new MarkerOptions()
-//                .position(PODLocation)
-//                .title("Sydney"));
-//        POD.setTag(0);
-//
-//        GoatHead = mMap.addMarker(new MarkerOptions()
-//                .position(GoatHeadLocation)
-//                .title("Brisbane"));
-//        GoatHead.setTag(0);
-
-        // Set a listener for marker click.
-//        mMap.setOnMarkerClickListener(this);
-
         subscribeToUpdates();
+        mMap.setOnInfoWindowClickListener(this);
     }
-    
-
     private void subscribeToUpdates() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference(getString(R.string.userLocationFirebasse));
         ref.addChildEventListener(new ChildEventListener() {
@@ -125,32 +128,75 @@ public class LocationSharingMapsActivity extends FragmentActivity implements OnM
         double lng = Double.parseDouble(value.get("longitude").toString());
         LatLng location = new LatLng(lat, lng);
         if (!mMarkers.containsKey(key)) {
-            mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location)));
+            double randomDouble = Math.random();
+            randomDouble = randomDouble * 360 + 1;
+            int randomInt = (int) randomDouble;
+            mMarkers.put(key, mMap.addMarker(new MarkerOptions().
+                    title(key)
+                    .position(location)
+                    .icon(BitmapDescriptorFactory.defaultMarker(randomInt)
+            )));
+//
         } else {
             mMarkers.get(key).setPosition(location);
         }
-//        todo change marker image
+
         CC = mMap.addMarker(new MarkerOptions()
                 .position(CCLocation)
-                .title("Perth"));
-        CC.setTag(0);
+                .title("Campus Center")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
+                CC.setTag(0);
 
         POD = mMap.addMarker(new MarkerOptions()
                 .position(PODLocation)
-                .title("Sydney"));
+                .title("POD")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
         POD.setTag(0);
 
         GoatHead = mMap.addMarker(new MarkerOptions()
                 .position(GoatHeadLocation)
-                .title("Brisbane"));
+                .title("Goats Head")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
+
+
+        Library = mMap.addMarker(new MarkerOptions()
+                .position(LibraryLocation)
+                .title("Library")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
+
         GoatHead.setTag(0);
         mMarkers.put("CC", CC);
         mMarkers.put("POD", POD);
-        mMarkers.put("GoatHead", GoatHead);
+        mMarkers.put("Goats Head", GoatHead);
+        mMarkers.put("Library", Library);
+
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for (Marker marker : mMarkers.values()) {
             builder.include(marker.getPosition());
         }
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 300));
+    }
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+
+        Toast.makeText(this, "Info window clicked",
+                Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
+
+        String userClicked = marker.getTitle();
+//        get key
+        intent.putExtra("userInMap", userClicked);
+        startActivity(intent);
+
     }
 }

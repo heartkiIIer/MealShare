@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -46,13 +47,16 @@ public class ShareMealMyMyPostingsRecycleViewAdapter extends RecyclerView.Adapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        MealSwipes meal = MyMealSwipesList.get(position);
+        final MealSwipes meal = MyMealSwipesList.get(position);
 
         holder.myposts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, ShareMealMyPostViewRequestsRecyclerViewActivity.class);
-//                intent.putExtra(EXTRA_MESSAGE, message);
+
+                intent.putExtra("MealPostID", meal.getID());
+                Toast.makeText(context,meal.getID(), meal.getID().length()).show();
+
                 context.startActivity(intent);
             }
         });
