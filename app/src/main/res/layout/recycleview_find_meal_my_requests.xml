@@ -2,110 +2,108 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/myrequest_cardview"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     card_view:cardElevation="5dp"
-    card_view:contentPadding="5dp"
     card_view:cardCornerRadius="5dp"
-    card_view:cardMaxElevation="5dp"
-    >
+    card_view:cardMaxElevation="5dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/myrequests"
-        android:layout_width="fill_parent"
-        android:layout_height="202dp"
-        android:background="#ECEFF1"
+        android:layout_width="416dp"
+        android:layout_height="239dp"
+        android:background="@drawable/recycleview_find_meal_header"
         android:clickable="true"
         android:padding="10dp">
 
         <TextView
             android:id="@+id/myrequests_time"
-            android:layout_width="wrap_content"
+            android:layout_width="144dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/quicksand"
             android:text="Time: "
-            android:textColor="#000"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/myrequests_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/myrequests_time"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="90dp"
-            android:gravity="center"
-            android:text="Location: "
-            android:textColor="#000"
-            android:textSize="20dp" />
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/myrequests_userNameto" />
 
         <TextView
             android:id="@+id/myrequests_status"
-            android:layout_width="wrap_content"
+            android:layout_width="308dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="90dp"
-            android:layout_marginBottom="67dp"
-            android:gravity="center"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/quicksand"
             android:text="Request status: "
-            android:textColor="#000"
-            android:textSize="20dp" />
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/myrequests_location" />
+
+        <TextView
+            android:id="@+id/myrequests_location"
+            android:layout_width="302dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/quicksand"
+            android:text="Location: "
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            card_view:layout_constraintLeft_toLeftOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/myrequests_time" />
 
         <TextView
             android:id="@+id/myrequests_notes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="118dp"
-            android:gravity="center"
+            android:layout_width="376dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/quicksand"
             android:text="Notes:"
-            android:textColor="#000"
-            android:textSize="20dp" />
+            android:textColor="#ffffff"
+            android:textSize="20dp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toBottomOf="@+id/myrequests_status" />
 
         <ImageButton
             android:id="@+id/myposts_deleteButton"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_below="@+id/myrequests_notes"
-            android:layout_marginLeft="210dp"
-            android:src="@android:drawable/ic_menu_delete"/>
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:src="@android:drawable/ic_menu_delete"
+            card_view:layout_constraintStart_toEndOf="@+id/myrequests_location"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/myrequests_userNameto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="240dp"
+            android:layout_height="29dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="132dp"
-            android:layout_marginLeft="132dp"
+            android:layout_marginStart="26dp"
+            android:layout_marginLeft="26dp"
             android:layout_marginTop="10dp"
             android:layout_toEndOf="@+id/myrequests_time"
             android:layout_toRightOf="@+id/myrequests_time"
-            android:text="To: Chloe"
-            android:textColor="#000"
+            android:fontFamily="@font/quicksand"
+            android:text="Request to: Chloe"
+            android:textColor="#ffffff"
             android:textSize="20dp"
-            />
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
 

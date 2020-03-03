@@ -3,41 +3,110 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/find_meal_header_selector">
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <TimePicker
-            android:id="@+id/specificTimePicker"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:timePickerMode="spinner" />
-
-        <Spinner
-            android:id="@+id/numberMealsRequestedSpinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/notesEditText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@string/noteslabel" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="406dp"
+        android:layout_height="731dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:tag="@string/find_meal_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/MakeRequestButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="206dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="56dp"
+            android:background="@drawable/request_button"
+            android:fontFamily="@font/quicksand"
             android:onClick="onMakeRequestButton"
-            android:text="Request  " />
+            android:text="Request"
+            android:textColor="#FFFFFF"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/notesEditText" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="76dp"
+            android:fontFamily="@font/quicksand"
+            android:text="@string/pick_time_prompt"
+            android:textColor="@color/textBasic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TimePicker
+            android:id="@+id/specificTimePicker"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="124dp"
+            android:timePickerMode="spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="56dp"
+            android:fontFamily="@font/quicksand"
+            android:text="@string/request_number"
+            android:textColor="@color/textBasic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/specificTimePicker" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="77dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/quicksand"
+            android:text="@string/noteslabel"
+            android:textColor="@color/textBasic"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberMealsRequestedSpinner" />
+
+        <EditText
+            android:id="@+id/notesEditText"
+            android:layout_width="267dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.715"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/numberMealsRequestedSpinner" />
+
+        <Spinner
+            android:id="@+id/numberMealsRequestedSpinner"
+            android:layout_width="78dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="304dp"
+            android:layout_marginLeft="304dp"
+            android:layout_marginTop="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/specificTimePicker" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

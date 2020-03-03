@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DatabaseReference;
@@ -100,7 +101,7 @@ public class ShareMealMyMyPostingsRecycleViewAdapter extends RecyclerView.Adapte
 
     class ViewHolder extends RecyclerView.ViewHolder{
 
-        public RelativeLayout myposts;
+        public ConstraintLayout myposts;
         public TextView myposts_location;
         public TextView myposts_startTime;
         public TextView myposts_endTime;

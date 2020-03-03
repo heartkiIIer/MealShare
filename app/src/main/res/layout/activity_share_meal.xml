@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShareMealActivity">
+    tools:context=".ShareMealActivity"
+    android:background="@drawable/share_meal_header_selector">
 
     <ScrollView
         android:layout_width="0dp"
@@ -17,127 +18,200 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/FromTimeTextView"
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="409dp"
+                android:layout_height="847dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <TimePicker
+                    android:id="@+id/toTimeTimePicker"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="start"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:text="@string/share_start"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:layout_marginStart="77dp"
+                    android:layout_marginLeft="77dp"
+                    android:timePickerMode="spinner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ToTimeTextView"
+                    tools:layout_conversion_absoluteHeight="212dp"
+                    tools:layout_conversion_absoluteWidth="307dp" />
 
                 <TimePicker
                     android:id="@+id/fromTimeTimePicker"
-                    android:layout_width="307dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
 
-                    android:timePickerMode="spinner" />
-            </LinearLayout>
+                    android:layout_marginStart="77dp"
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                    android:layout_marginLeft="77dp"
+                    android:timePickerMode="spinner"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/FromTimeTextView" />
 
                 <TextView
                     android:id="@+id/ToTimeTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_weight="1"
+                    android:layout_marginStart="181dp"
+                    android:layout_marginLeft="181dp"
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="@font/quicksand"
                     android:text="@string/share_end"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <TimePicker
-                    android:id="@+id/toTimeTimePicker"
-                    android:layout_width="307dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_weight="0"
-                    android:timePickerMode="spinner" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textBasic"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fromTimeTimePicker"
+                    tools:layout_conversion_absoluteHeight="19dp"
+                    tools:layout_conversion_absoluteWidth="88dp" />
 
                 <TextView
-                    android:id="@+id/ShareMealNote"
-                    android:layout_width="57dp"
-                    android:layout_height="20dp"
-                    android:text="@string/noteslabel"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+                    android:id="@+id/FromTimeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="65dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginTop="35dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/share_start"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textBasic"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
                     android:id="@+id/ShareMealNoteEditText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_width="278dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="24dp"
                     android:ems="10"
-                    android:inputType="textPersonName" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:fontFamily="@font/quicksand"
+                    android:inputType="textPersonName"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/ShareMealNote"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/share_label"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-            </LinearLayout>
-
-            <Spinner
-                android:id="@+id/meals_amount"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                    android:id="@+id/ShareMealNote"
+                    android:layout_width="63dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="28dp"
+                    android:layout_marginLeft="28dp"
+                    android:layout_marginTop="21dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/noteslabel"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textBasic"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="31dp"
+                    android:layout_marginLeft="31dp"
+                    android:layout_marginTop="31dp"
+                    android:fontFamily="@font/quicksand"
                     android:text="@string/sharelocation_label"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-            </LinearLayout>
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textBasic"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/toTimeTimePicker" />
 
-            <Spinner
-                android:id="@+id/locationsSpinner"
-                android:layout_width="409dp"
-                android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="31dp"
+                    android:layout_marginLeft="31dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/quicksand"
+                    android:text="@string/share_label"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/textBasic"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-            <Button
-                android:id="@+id/ShareMealsSubmitButton"
+                <Spinner
+                    android:id="@+id/locationsSpinner"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="71dp"
+                    android:layout_marginLeft="71dp"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintTop_toBottomOf="@+id/toTimeTimePicker" />
+
+                <Spinner
+                    android:id="@+id/meals_amount"
+                    android:layout_width="81dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="47dp"
+                    android:layout_marginLeft="47dp"
+                    android:layout_marginTop="26dp"
+                    app:layout_constraintStart_toEndOf="@+id/textView"
+                    app:layout_constraintTop_toBottomOf="@+id/locationsSpinner" />
+
+                <Button
+                    android:id="@+id/ShareMealsSubmitButton"
+                    android:layout_width="206dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="101dp"
+                    android:layout_marginLeft="101dp"
+                    android:layout_marginTop="33dp"
+                    android:background="@drawable/share_button"
+                    android:fontFamily="@font/quicksand"
+                    android:onClick="onShareMealSubmit"
+                    android:text="@string/postbutton"
+                    android:textColor="#ffffff"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ShareMealNoteEditText" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:onClick="onShareMealSubmit"
-                android:text="@string/postbutton" />
+                android:layout_height="match_parent">
 
-        </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
 
