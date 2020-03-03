@@ -87,7 +87,7 @@ public class TrackerService extends Service {
         final String path = getString(R.string.userLocationFirebasse) + mUsername;
         int permission = ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
-        System.out.println("IN REQUETLOCATIONUPDATES");
+//        System.out.println("IN REQUETLOCATIONUPDATES");
         if (permission == PackageManager.PERMISSION_GRANTED) {
             // Request location updates and when an update is
             // received, store the location in Firebase
@@ -97,9 +97,9 @@ public class TrackerService extends Service {
                 public void onLocationResult(LocationResult locationResult) {
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference(path);
                     Location location = locationResult.getLastLocation();
-                    System.out.println("OUTSIDE IF INSIDE LOCATION RESULT");
+//                    System.out.println("OUTSIDE IF INSIDE LOCATION RESULT");
                     if (location != null) {
-                        System.out.println(("INNNN ON LOCATION RESULT"));
+//                        System.out.println(("INNNN ON LOCATION RESULT"));
                         Log.d(TAG, "location update " + location);
                         ref.setValue(location);
                     }
