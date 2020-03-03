@@ -64,8 +64,8 @@ public class FindMealViewMyRequestRecycleViewActiviy extends AppCompatActivity {
 
                                 Request newRequest = new Request();
                                 newRequest.setRequestID(nodId);
-                                // TODO: 3/1/2020 check thisto check for deleted meal post
-                                if (userName.equals(mUsername)){
+                                // TODO: 3/1/2020 check this to check for deleted meal post
+                                if (userName!=null&& userName.equals(mUsername)){
                                     String mealPostID =(String) snap.child("mealPostID").getValue();
                                     newRequest.setMealPostID(mealPostID);
                                     newRequest.setUserName((String)snap.child("userName").getValue());

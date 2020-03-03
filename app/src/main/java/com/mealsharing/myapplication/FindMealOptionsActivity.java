@@ -40,7 +40,7 @@ public class FindMealOptionsActivity extends AppCompatActivity {
         // Check GPS is enabled
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-            Toast.makeText(this, "Please enable location services", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Please enable location services", Toast.LENGTH_LONG).show();
             finish();
         }
 
@@ -50,7 +50,7 @@ public class FindMealOptionsActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if (permission == PackageManager.PERMISSION_GRANTED) {
             System.out.println("PERMISSION GRANTED");
-            Toast.makeText(this, "PERMISSION SERVICE ACCEPTED", Toast.LENGTH_SHORT);
+//            Toast.makeText(this, "PERMISSION SERVICE ACCEPTED", Toast.LENGTH_SHORT);
 //            startTrackerService();
         } else {
             ActivityCompat.requestPermissions(this,
@@ -58,13 +58,24 @@ public class FindMealOptionsActivity extends AppCompatActivity {
                     PERMISSIONS_REQUEST);
         }
 //        todo multithreading for this?
-        startTrackerService();
+//        startTrackerService();
+        PhotoDecodeRunnable test= new PhotoDecodeRunnable();
+        test.run();
         startActivity(new Intent(this, LocationSharingMapsActivity.class));
 
 
 
     }
-    private void startTrackerService() {
+    class PhotoDecodeRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            System.out.println("RUNNING");
+            startTrackerService();
+        }
+    }
+
+        private void startTrackerService() {
         startService(new Intent(this, TrackerService.class));
 //        finish();
     }
