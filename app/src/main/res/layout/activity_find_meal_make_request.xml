@@ -26,7 +26,7 @@
             android:fontFamily="@font/quicksand"
             android:onClick="onMakeRequestButton"
             android:text="Request"
-            android:textColor="#ffffff"
+            android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/notesEditText" />
@@ -40,7 +40,7 @@
             android:layout_marginTop="76dp"
             android:fontFamily="@font/quicksand"
             android:text="@string/pick_time_prompt"
-            android:textColor="@android:color/secondary_text_material_light"
+            android:textColor="@color/textBasic"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -65,7 +65,7 @@
             android:layout_marginTop="56dp"
             android:fontFamily="@font/quicksand"
             android:text="@string/request_number"
-            android:textColor="@android:color/secondary_text_material_light"
+            android:textColor="@color/textBasic"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/specificTimePicker" />
@@ -79,7 +79,7 @@
             android:layout_marginTop="40dp"
             android:fontFamily="@font/quicksand"
             android:text="@string/noteslabel"
-            android:textColor="@android:color/secondary_text_material_light"
+            android:textColor="@color/textBasic"
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/numberMealsRequestedSpinner" />

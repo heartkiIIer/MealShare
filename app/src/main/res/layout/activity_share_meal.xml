@@ -74,7 +74,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="@string/share_end"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/secondary_text_material_light"
+                    android:textColor="@color/textBasic"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/fromTimeTimePicker"
@@ -91,7 +91,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="@string/share_start"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/secondary_text_material_light"
+                    android:textColor="@color/textBasic"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -118,7 +118,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="@string/noteslabel"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/secondary_text_material_light"
+                    android:textColor="@color/textBasic"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -133,7 +133,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="@string/sharelocation_label"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/secondary_text_material_light"
+                    android:textColor="@color/textBasic"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toTimeTimePicker" />
@@ -148,7 +148,7 @@
                     android:fontFamily="@font/quicksand"
                     android:text="@string/share_label"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    android:textColor="@android:color/secondary_text_material_light"
+                    android:textColor="@color/textBasic"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView2" />
