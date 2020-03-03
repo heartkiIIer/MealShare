@@ -56,7 +56,6 @@ public class ShareMealMyMyPostingsRecycleViewAdapter extends RecyclerView.Adapte
                 Intent intent = new Intent(context, ShareMealMyPostViewRequestsRecyclerViewActivity.class);
 
                 intent.putExtra("MealPostID", meal.getID());
-                Toast.makeText(context,meal.getID(), meal.getID().length()).show();
 
                 context.startActivity(intent);
             }

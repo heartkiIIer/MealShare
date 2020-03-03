@@ -136,7 +136,6 @@ public class ShareMealMyPostingsRecyclerViewActivity extends AppCompatActivity i
 
     @Override
     public void onItemClick(int position) {
-        Toast.makeText(this, "hello", "hello".length());
 //        Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
         Intent intent = new Intent(this, MainActivity.class);
 //        Intent intent = new Intent(this, FindMealMakeRequest.class);

@@ -62,19 +62,15 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
             userInMap=intent.getExtras().getString("userInMap");
         }
         catch (Exception e){
-            Toast.makeText(this, "this is not from the map", Toast.LENGTH_SHORT).show();
         }
         if (userInMap.isEmpty()){
-            Toast.makeText(this, "this is not from the map", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(this, "this is from the map" + userInMap, Toast.LENGTH_SHORT).show();
 
         }
 
 
 //        String userInMap = intent.getExtras().getString("userInMap");
-//        Toast.makeText(this, "this is from the map", Toast.LENGTH_SHORT).show();
 
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
@@ -209,7 +205,6 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
 
     @Override
     public void onItemClick(int position){
-        Toast.makeText(this,"hello", "hello".length()).show();
 
         MealSwipes current = MyMealSwipesList.get(position);
 
