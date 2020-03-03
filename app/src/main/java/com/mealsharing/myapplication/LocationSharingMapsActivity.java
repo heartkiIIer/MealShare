@@ -128,17 +128,15 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         double lng = Double.parseDouble(value.get("longitude").toString());
         LatLng location = new LatLng(lat, lng);
         if (!mMarkers.containsKey(key)) {
+            double randomDouble = Math.random();
+            randomDouble = randomDouble * 360 + 1;
+            int randomInt = (int) randomDouble;
             mMarkers.put(key, mMap.addMarker(new MarkerOptions().
                     title(key)
                     .position(location)
-                    .snippet("TEST")
-                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+                    .icon(BitmapDescriptorFactory.defaultMarker(randomInt)
             )));
-//            String FirebasePath= "user/"+ mUsername + "/mealswipe";
-//            DatabaseReference mealRef= FirebaseDatabase.getInstance().getReference(FirebasePath);
-//            System.out.println("IN LOATION SHARING MAPS");
-//            mealRef.child("locations");
-//            put that as snippet
+//
         } else {
             mMarkers.get(key).setPosition(location);
         }
@@ -157,7 +155,7 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
 
         GoatHead = mMap.addMarker(new MarkerOptions()
                 .position(GoatHeadLocation)
-                .title("GoatsHead")
+                .title("Goats Head")
                 .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
 
 
@@ -169,7 +167,7 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         GoatHead.setTag(0);
         mMarkers.put("CC", CC);
         mMarkers.put("POD", POD);
-        mMarkers.put("GoatHead", GoatHead);
+        mMarkers.put("Goats Head", GoatHead);
         mMarkers.put("Library", Library);
 
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
@@ -187,18 +185,6 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         vectorDrawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
-
-//    private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {
-//        Drawable background = ContextCompat.getDrawable(context, R.drawable.ic_food_pin_svgrepo_com);
-//        background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());
-//        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId);
-//        vectorDrawable.setBounds(40, 20, vectorDrawable.getIntrinsicWidth() + 40, vectorDrawable.getIntrinsicHeight() + 20);
-//        Bitmap bitmap = Bitmap.createBitmap(background.getIntrinsicWidth(), background.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
-//        Canvas canvas = new Canvas(bitmap);
-//        background.draw(canvas);
-//        vectorDrawable.draw(canvas);
-//        return BitmapDescriptorFactory.fromBitmap(bitmap);
-//    }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
