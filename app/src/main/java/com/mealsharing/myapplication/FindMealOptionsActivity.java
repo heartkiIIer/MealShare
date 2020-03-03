@@ -58,7 +58,7 @@ public class FindMealOptionsActivity extends AppCompatActivity {
                     PERMISSIONS_REQUEST);
         }
 //        todo multithreading for this?
-//        startTrackerService();
+        startTrackerService();
         startActivity(new Intent(this, LocationSharingMapsActivity.class));
 
 
