@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     card_view:cardElevation="5dp"
+    card_view:contentPaddingBottom="1dp"
     card_view:cardCornerRadius="5dp"
     card_view:cardMaxElevation="5dp">
 
@@ -50,9 +51,9 @@
             android:id="@+id/accept_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="292dp"
-            android:layout_marginLeft="292dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="192dp"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="108dp"
             android:background="@drawable/share_button"
             android:fontFamily="@font/quicksand"
             android:text="Accept"

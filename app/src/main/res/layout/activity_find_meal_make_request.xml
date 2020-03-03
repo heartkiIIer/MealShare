@@ -26,6 +26,7 @@
             android:fontFamily="@font/quicksand"
             android:onClick="onMakeRequestButton"
             android:text="Request"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
