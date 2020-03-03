@@ -12,29 +12,29 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/myposts"
         android:layout_width="match_parent"
-        android:layout_height="188dp"
+        android:layout_height="150dp"
         android:background="@drawable/recycleview_share_meal_my_postings_header"
         android:clickable="true"
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/myposts_startTime"
-            android:layout_width="135dp"
-            android:layout_height="39dp"
+            android:id="@id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginTop="75dp"
             android:fontFamily="@font/quicksand"
             android:text="Time: "
             android:textColor="#ffffff"
             android:textSize="20sp"
             card_view:layout_constraintStart_toStartOf="parent"
-            card_view:layout_constraintTop_toBottomOf="@+id/myposts_userNamefrom" />
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/myposts_requestCount"
-            android:layout_width="105dp"
-            android:layout_height="21dp"
+            android:id="@+id/textView11"
+            android:layout_width="70dp"
+            android:layout_height="23dp"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="13dp"
@@ -45,13 +45,14 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
+
         <Button
             android:id="@+id/accept_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="192dp"
-            android:layout_marginLeft="192dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginStart="292dp"
+            android:layout_marginLeft="292dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/share_button"
             android:fontFamily="@font/quicksand"
             android:text="Accept"
@@ -63,9 +64,9 @@
             android:id="@+id/reject_request"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="298dp"
-            android:layout_marginLeft="298dp"
-            android:layout_marginTop="108dp"
+            android:layout_marginStart="292dp"
+            android:layout_marginLeft="292dp"
+            android:layout_marginTop="72dp"
             android:background="@drawable/share_button"
             android:fontFamily="@font/quicksand"
             android:text="Reject"
@@ -74,17 +75,59 @@
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/myposts_userNamefrom"
-            android:layout_width="346dp"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="40dp"
             android:fontFamily="@font/quicksand"
             android:text="Requested by: "
             android:textColor="#ffffff"
             android:textSize="20sp"
             android:textStyle="bold"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myposts_userNamefrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/quicksand"
+            android:text="Jose"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            card_view:layout_constraintStart_toEndOf="@+id/textView3"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myposts_requestCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginTop="13dp"
+            android:fontFamily="@font/quicksand"
+            android:text="22"
+            android:textColor="#ffffff"
+            card_view:layout_constraintStart_toEndOf="@+id/textView11"
+            card_view:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myposts_startTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="88dp"
+            android:layout_marginLeft="88dp"
+            android:layout_marginTop="76dp"
+            android:fontFamily="@font/quicksand"
+            android:text="11:30 AM"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
