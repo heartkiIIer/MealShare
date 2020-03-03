@@ -1,17 +1,26 @@
 package com.mealsharing.myapplication;
 
+import androidx.annotation.DrawableRes;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
@@ -119,7 +128,12 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         double lng = Double.parseDouble(value.get("longitude").toString());
         LatLng location = new LatLng(lat, lng);
         if (!mMarkers.containsKey(key)) {
-            mMarkers.put(key, mMap.addMarker(new MarkerOptions().title(key).position(location).snippet("TEST")));
+            mMarkers.put(key, mMap.addMarker(new MarkerOptions().
+                    title(key)
+                    .position(location)
+                    .snippet("TEST")
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+            )));
 //            String FirebasePath= "user/"+ mUsername + "/mealswipe";
 //            DatabaseReference mealRef= FirebaseDatabase.getInstance().getReference(FirebasePath);
 //            System.out.println("IN LOATION SHARING MAPS");
@@ -128,24 +142,29 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         } else {
             mMarkers.get(key).setPosition(location);
         }
-//        todo change marker image
+
         CC = mMap.addMarker(new MarkerOptions()
                 .position(CCLocation)
-                .title("Campus Center"));
-        CC.setTag(0);
+                .title("Campus Center")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
+                CC.setTag(0);
 
         POD = mMap.addMarker(new MarkerOptions()
                 .position(PODLocation)
-                .title("POD"));
+                .title("POD")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
         POD.setTag(0);
 
         GoatHead = mMap.addMarker(new MarkerOptions()
                 .position(GoatHeadLocation)
-                .title("GoatsHead"));
+                .title("GoatsHead")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
+
 
         Library = mMap.addMarker(new MarkerOptions()
                 .position(LibraryLocation)
-                .title("Library"));
+                .title("Library")
+                .icon(bitmapDescriptorFromVector(getApplicationContext(), R.drawable.chicken2)));
 
         GoatHead.setTag(0);
         mMarkers.put("CC", CC);
@@ -159,6 +178,27 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
         }
         mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 300));
     }
+
+    private BitmapDescriptor bitmapDescriptorFromVector(Context context, int vectorResId) {
+        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorResId);
+        vectorDrawable.setBounds(0, 0, vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight());
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(), vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+//    private BitmapDescriptor bitmapDescriptorFromVector(Context context, @DrawableRes int vectorDrawableResourceId) {
+//        Drawable background = ContextCompat.getDrawable(context, R.drawable.ic_food_pin_svgrepo_com);
+//        background.setBounds(0, 0, background.getIntrinsicWidth(), background.getIntrinsicHeight());
+//        Drawable vectorDrawable = ContextCompat.getDrawable(context, vectorDrawableResourceId);
+//        vectorDrawable.setBounds(40, 20, vectorDrawable.getIntrinsicWidth() + 40, vectorDrawable.getIntrinsicHeight() + 20);
+//        Bitmap bitmap = Bitmap.createBitmap(background.getIntrinsicWidth(), background.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(bitmap);
+//        background.draw(canvas);
+//        vectorDrawable.draw(canvas);
+//        return BitmapDescriptorFactory.fromBitmap(bitmap);
+//    }
 
     @Override
     public void onInfoWindowClick(Marker marker) {
