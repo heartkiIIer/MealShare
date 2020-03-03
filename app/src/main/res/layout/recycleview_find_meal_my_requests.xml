@@ -81,7 +81,8 @@
             android:layout_height="50dp"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
-            android:src="@android:drawable/ic_menu_delete"
+            android:src="@drawable/white_close_small"
+            android:background="@color/fui_transparent"
             card_view:layout_constraintStart_toEndOf="@+id/myrequests_location"
             card_view:layout_constraintTop_toTopOf="parent" />
 
