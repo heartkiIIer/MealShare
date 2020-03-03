@@ -36,6 +36,7 @@
         android:onClick="onFindMeal"
         android:text="@string/lookbutton_txt"
         android:textColor="#ffffff"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -63,6 +64,7 @@
         android:fontFamily="@font/quicksand"
         android:onClick="onShareMeal"
         android:text="@string/sharebutton_txt"
+        android:textStyle="bold"
         android:textColor="#ffffff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -79,6 +81,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#AD3D3A3A"
         android:textSize="18sp"
+
         android:textStyle="italic"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
