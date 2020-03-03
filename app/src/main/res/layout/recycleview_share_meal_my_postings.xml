@@ -78,14 +78,14 @@
 
         <TextView
             android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="26dp"
             android:layout_marginLeft="26dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksand"
-            android:text="Post #"
+            android:text="# of Requests:"
             android:textColor="#ffffff"
             android:textStyle="italic"
             card_view:layout_constraintStart_toStartOf="parent"
@@ -94,26 +94,27 @@
         <ImageButton
             android:id="@+id/myposts_deleteButton"
             android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_height="53dp"
             android:layout_marginStart="336dp"
             android:layout_marginLeft="336dp"
             android:layout_marginTop="4dp"
-            android:src="@drawable/white_close_small"
             android:background="@color/fui_transparent"
+            android:src="@drawable/white_close_small"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/myposts_requestCount"
-            android:layout_width="wrap_content"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="76dp"
-            android:layout_marginLeft="76dp"
+            android:layout_marginStart="130dp"
+            android:layout_marginLeft="130dp"
             android:layout_marginTop="11dp"
             android:fontFamily="@font/quicksand"
             android:text="34"
             android:textColor="#ffffff"
             android:textSize="14sp"
+            android:textStyle="italic"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 

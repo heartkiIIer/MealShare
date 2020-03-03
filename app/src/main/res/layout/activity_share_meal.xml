@@ -102,6 +102,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="660dp"
                     android:ems="10"
+                    android:textColor="#ffffff"
                     android:fontFamily="@font/quicksand"
                     android:inputType="textPersonName"
                     android:textSize="20sp"
