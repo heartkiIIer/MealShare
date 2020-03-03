@@ -12,7 +12,6 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:background="@drawable/find_meal_circle"
-        android:drawableTop="@android:drawable/ic_search"
         android:fontFamily="@font/quicksand"
         android:onClick="onFindMealButton"
         android:paddingTop="40dp"

@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
@@ -26,7 +27,6 @@
                 android:layout_marginLeft="13dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
-                android:adjustViewBounds="true"
                 app:civ_border_color="#E91E63"
                 app:civ_border_width="2dp"
                 app:layout_constraintBottom_toBottomOf="parent"
