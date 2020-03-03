@@ -20,6 +20,7 @@ android {
 }
 
 dependencies {
+
 //    google map
     implementation 'com.google.maps.android:android-maps-utils:0.5'
     implementation 'de.hdodenhof:circleimageview:3.1.0'

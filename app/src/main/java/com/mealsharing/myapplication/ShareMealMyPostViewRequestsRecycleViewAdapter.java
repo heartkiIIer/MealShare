@@ -87,7 +87,6 @@ public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.
             public void onClick(View view) {
                 // update database state
                 String message = "Rejected Request";
-                Toast.makeText(context,message, message.length()).show();
                 mDatabaseReference.child("Requests").child(reqs.getRequestID()).child("status").setValue("rejected");
             }
         });
@@ -135,7 +134,6 @@ public class ShareMealMyPostViewRequestsRecycleViewAdapter extends RecyclerView.
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(v.getContext(), "Clicked item", Toast.LENGTH_SHORT).show();
         }
     }
 }

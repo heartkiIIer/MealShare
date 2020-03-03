@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity
                 Manifest.permission.ACCESS_FINE_LOCATION);
         if (permission == PackageManager.PERMISSION_GRANTED) {
             System.out.println("PERMISSION GRANTED");
-            Toast.makeText(this, "PERMISSION SERVICE ACCEPTED", Toast.LENGTH_SHORT);
 //            startTrackerService();
         } else {
             ActivityCompat.requestPermissions(this,

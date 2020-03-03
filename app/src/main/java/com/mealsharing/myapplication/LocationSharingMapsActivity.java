@@ -189,8 +189,7 @@ public class LocationSharingMapsActivity extends FragmentActivity implements Goo
     @Override
     public void onInfoWindowClick(Marker marker) {
 
-        Toast.makeText(this, "Info window clicked",
-                Toast.LENGTH_SHORT).show();
+
         Intent intent = new Intent(this, FindMealRecyclerViewActivity.class);
 
         String userClicked = marker.getTitle();
