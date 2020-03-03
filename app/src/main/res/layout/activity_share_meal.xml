@@ -100,11 +100,11 @@
                     android:id="@+id/ShareMealNoteEditText"
                     android:layout_width="278dp"
                     android:layout_height="48dp"
-                    android:layout_marginTop="660dp"
+                    android:layout_marginTop="653dp"
                     android:ems="10"
-                    android:textColor="#ffffff"
                     android:fontFamily="@font/quicksand"
                     android:inputType="textPersonName"
+                    android:textColor="#ffffff"
                     android:textSize="20sp"
                     app:layout_constraintStart_toEndOf="@+id/ShareMealNote"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -156,12 +156,12 @@
 
                 <Spinner
                     android:id="@+id/locationsSpinner"
-                    android:layout_width="81dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="24dp"
-                    android:layout_marginStart="71dp"
-                    android:layout_marginLeft="71dp"
+                    android:layout_marginStart="235dp"
+                    android:layout_marginLeft="235dp"
                     android:layout_marginTop="36dp"
-                    app:layout_constraintStart_toEndOf="@+id/textView2"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toTimeTimePicker" />
 
                 <Spinner

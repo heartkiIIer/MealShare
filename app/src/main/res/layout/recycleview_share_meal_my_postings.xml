@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="130dp"
             android:layout_marginLeft="130dp"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksand"
             android:text="34"
             android:textColor="#ffffff"
