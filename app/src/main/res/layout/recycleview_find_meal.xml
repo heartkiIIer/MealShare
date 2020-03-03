@@ -3,20 +3,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/find_meal_header_selector">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="412dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="413dp"
+            android:layout_height="127dp"
+            android:background="@drawable/recycleview_find_meal_header">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/myposts_userImage"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginStart="13dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:adjustViewBounds="true"
+                app:civ_border_color="#E91E63"
+                app:civ_border_width="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.518"
+                app:srcCompat="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/myposts_userName"
@@ -24,36 +41,40 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/quicksand"
                 android:text="Little Do"
+                android:textColor="#E91E63"
                 android:textSize="24sp"
                 app:layout_constraintStart_toEndOf="@+id/myposts_userImage"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/myposts_userImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:maxWidth="150dp"
-                android:maxHeight="150dp"
-                android:minWidth="150dp"
-                android:minHeight="150dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@mipmap/ic_launcher" />
+            <TextView
+                android:id="@+id/myposts_notes"
+                android:layout_width="250dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="88dp"
+                android:fontFamily="@font/quicksand"
+                android:text="notes ... "
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                app:layout_constraintStart_toEndOf="@id/myposts_userImage"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/myposts_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="12dp"
-                android:text="Location"
+                android:id="@+id/myposts_endTime"
+                android:layout_width="68dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/quicksand"
+                android:text="5:20 PM"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/myposts_userName"
+                app:layout_constraintStart_toEndOf="@+id/myposts_startTime"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -62,37 +83,53 @@
                 android:layout_height="24dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:text="420 AM"
-
+                android:layout_marginTop="60dp"
+                android:fontFamily="@font/quicksand"
+                android:text="4:20 AM"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
                 app:layout_constraintStart_toEndOf="@+id/myposts_userName"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/myposts_endTime"
-                android:layout_width="49dp"
-                android:layout_height="23dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:text="520 M"
-                android:textSize="15sp"
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="59dp"
+                android:fontFamily="@font/quicksand"
+                android:text="@string/emdash"
+                android:textColor="#FFFFFF"
                 app:layout_constraintStart_toEndOf="@+id/myposts_startTime"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
+                android:layout_marginLeft="52dp"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/quicksand"
+                android:text="@string/times"
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toEndOf="@+id/myposts_userName"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/myposts_notes"
-                android:layout_width="49dp"
+                android:id="@+id/myposts_location"
+                android:layout_width="112dp"
                 android:layout_height="23dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="8dp"
-                android:text="notes ... "
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="6dp"
+                android:fontFamily="@font/quicksand"
+                android:text="Location"
+                android:textColor="#FFFFFF"
                 android:textSize="15sp"
-                app:layout_constraintStart_toEndOf="@+id/myposts_location"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@id/myposts_userImage"
+                app:layout_constraintTop_toBottomOf="@id/myposts_userName" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

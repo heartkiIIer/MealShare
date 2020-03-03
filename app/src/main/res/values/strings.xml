@@ -28,6 +28,8 @@
     <string name="share_label">\# of swipes I\'m offering:</string>
     <string name="sharelocation_label">I\'m sharing swipes at:</string>
     <string name="postbutton">Share</string>
+    <string name="emdash">—</string>
+    <string name="times">Offering from:</string>
     <string name="mealShareSuccess">Thank you for ending hunger!</string>
     <string name="share_meal_view_button">View My Posts</string>
     <string name="share_meal_make_post">Make a Meal Share Post</string>
