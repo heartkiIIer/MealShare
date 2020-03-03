@@ -76,6 +76,7 @@ public class FindMealMakeRequest extends AppCompatActivity {
         Intent intent = getIntent();
         String mealPostID = intent.getExtras().getString("MealPostID");
         String locationRequest = intent.getExtras().getString("MealPostLocation");
+        String userNameto = intent.getExtras().getString("userNameto");
 
 //        create request object
         Request newRequest= new Request();
@@ -93,6 +94,7 @@ public class FindMealMakeRequest extends AppCompatActivity {
         newRequest.setMinute(specificTimePicker.getMinute());
         newRequest.setNotes(notesEditText.getText().toString());
         newRequest.setUserNamefrom(mUsername);
+        newRequest.setUserNameto(userNameto);
         newRequest.setPhotoURL(mPhotoUrl);
         newRequest.setLocation(locationRequest);
 //        add to database

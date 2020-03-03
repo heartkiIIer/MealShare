@@ -56,6 +56,8 @@ public class FindMealViewMyRequestAdapter extends RecyclerView.Adapter<FindMealV
         holder.myrequests_notes.setText(req.getNotes());
         holder.myrequests_status.setText(req.getStatus());
 
+        holder.myrequests_userNameto.setText(req.getUserNameto());
+
 
 //        holder.myposts_requestCount.setText(Integer.toString(meal.getRequestCount()));
 
@@ -77,6 +79,7 @@ public class FindMealViewMyRequestAdapter extends RecyclerView.Adapter<FindMealV
         TextView myrequests_location;
         TextView myrequests_status;
         TextView myrequests_notes;
+        TextView myrequests_userNameto;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -84,15 +87,15 @@ public class FindMealViewMyRequestAdapter extends RecyclerView.Adapter<FindMealV
             myrequests_location = itemView.findViewById(R.id.myrequests_location);
             myrequests_notes = (TextView) itemView.findViewById(R.id.myrequests_notes);
             myrequests_status = (TextView) itemView.findViewById(R.id.myrequests_status);
+            myrequests_userNameto = itemView.findViewById(R.id.myrequests_userNameto);
 
-            itemView.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick(View view){
-//                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
-                }
-            });
+//            itemView.setOnClickListener(new View.OnClickListener(){
+//                @Override
+//                public void onClick(View view){
+////                    recyclerViewClickInterface.onItemClick(getAdapterPosition());
+//                }
+//            });
 
-            // on long click
 
         }
     }
