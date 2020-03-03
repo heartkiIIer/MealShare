@@ -31,11 +31,6 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
     private FirebaseAuth mFirebaseAuth;
     private FirebaseUser mFirebaseUser;
     private String userInMap="";
-
-    // todo remove later
-    int images [] = {R.drawable.com_facebook_profile_picture_blank_portrait,R.drawable.com_facebook_favicon_blue, R.drawable.common_google_signin_btn_icon_dark, R.drawable.com_facebook_profile_picture_blank_portrait};
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,10 +66,6 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
             Toast.makeText(this, "this is from the map" + userInMap, Toast.LENGTH_SHORT).show();
 
         }
-
-
-//        String userInMap = intent.getExtras().getString("userInMap");
-//        Toast.makeText(this, "this is from the map", Toast.LENGTH_SHORT).show();
 
         // database
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Meals");
@@ -185,10 +176,7 @@ public class FindMealRecyclerViewActivity extends AppCompatActivity implements R
                                             newMeal.setNotes(notes);
                                             MyMealSwipesList.add(newMeal);
                                         }
-
                                     }
-
-
                             }
 
                         }
